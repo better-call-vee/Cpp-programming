@@ -28,6 +28,13 @@ int main ()
 
     //these all have O(logn) complexity. (insert/accessing)
 
+    for(int i=0; i<3; i++)
+    {
+        string inp;
+        cin>>inp;          //inserting elements into map.
+        mp.emplace(inp, i); //mp.insert(make_pair(inp,i)); can be written like this
+    }
+
     ///PRINT THE MAP O(n)
     cout<<"PRINTING THE MAP: \n";
     for(auto it:mp)
