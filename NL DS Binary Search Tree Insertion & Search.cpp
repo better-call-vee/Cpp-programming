@@ -54,7 +54,7 @@ public:
         node *prv = nullptr;
         while(cur != nullptr) //we are going until cur is being null
         {
-            if(newnode->value > cur->value) //so, if root's value is greater than
+            if(newnode->value > cur->value) //so, if root's value is less than
 //newnode's value, we will obviously go to right.
             {
                 prv = cur; //so now 5 will be prv and 8 will be cur

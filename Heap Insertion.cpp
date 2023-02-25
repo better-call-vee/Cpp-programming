@@ -23,7 +23,7 @@ class MaxHeap
 public:
     vector<int>nodes;
 
-    Heap()
+    MaxHeap()
     {
 
     }
