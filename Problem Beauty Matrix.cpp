@@ -28,18 +28,22 @@ int main ()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int n;
-    cin>>n;
-    list<int>l; //at first taking a linked list to push the elements from 1 to n^2
-
-    for(int i=1; i<=(n*n); i++) l.push_back(i); //pushed
-
-    int grid[n][n]; //taking a grid(2D array) which will be the matrix
-
-    for(int i=0; i<n; i++)
+    int t;
+    cin>>t;
+    while(t--)
     {
-        if((i+1)%2!=0)  //for odd row.
+        int n;
+        cin>>n;
+        list<int>l; //at first taking a linked list to push the elements from 1 to n^2
+
+        for(int i=1; i<=(n*n); i++) l.push_back(i); //pushed
+
+        int grid[n][n]; //taking a grid(2D array) which will be the matrix
+
+        for(int i=0; i<n; i++)
         {
+            if((i+1)%2!=0)  //for odd row.
+            {
 //╔═══╦═══╦═══╗
 //║ 9 ║ 1 ║ 8 ║ if the columns are odd for odd row, we will take the biggest
 //╠═══╬═══╬═══╣ numbers.
@@ -47,43 +51,44 @@ int main ()
 //╠═══╬═══╬═══╣ numbers.
 //║ 6 ║ 4 ║ 5 ║ vice versa for even row.
 //╚═══╩═══╩═══╝
-            for(int j=0; j<n; j++)
-            {
-                if((j+1)%2!=0) //okay now, for odd row, look at the columns.
+                for(int j=0; j<n; j++)
                 {
-                    grid[i][j] = l.back(); //backs will contain higher numbers
-                    l.pop_back();
+                    if((j+1)%2!=0) //okay now, for odd row, look at the columns.
+                    {
+                        grid[i][j] = l.back(); //backs will contain higher numbers
+                        l.pop_back();
+                    }
+                    else
+                    {
+                        grid[i][j] = l.front(); //fronts will contain lower numbers
+                        l.pop_front();
+                    }
                 }
-                else
+            }
+            else //for even rows.
+            {
+                for(int j=n-1; j>=0; j--) //because we are going backward now.
                 {
-                    grid[i][j] = l.front(); //fronts will contain lower numbers
-                    l.pop_front();
+                    if((j+1)%2!=0)
+                    {
+                        grid[i][j] = l.front(); //vice versa applied
+                        l.pop_front();
+                    }
+                    else
+                    {
+                        grid[i][j] = l.back();
+                        l.pop_back();
+                    }
                 }
             }
         }
-        else //for even rows.
+
+        for(int i=0; i<n; i++)
         {
-            for(int j=n-1; j>=0; j--) //because we are going backward now.
-            {
-                if((j+1)%2!=0)
-                {
-                    grid[i][j] = l.front(); //vice versa applied
-                    l.pop_front();
-                }
-                else
-                {
-                    grid[i][j] = l.back();
-                    l.pop_back();
-                }
-            }
+            for(int j=0; j<n; j++) cout<<grid[i][j]<<" ";
+            cout<<"\n";
         }
+        cout<<"\n\n";
     }
-
-    for(int i=0; i<n; i++)
-    {
-        for(int j=0; j<n; j++) cout<<grid[i][j]<<" ";
-        cout<<"\n";
-    }
-
     return 0;
 }
