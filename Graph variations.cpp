@@ -62,10 +62,10 @@ Bipartite Graph:
   \  /
    \/
    03
-It's a complete node where each and every node is connected with each other.
-There can be more examples of complete node.
-A---B, it's also a complete node with only a single edge.
-A, it's also a complete node without an edge.
+It's a complete graph where each and every node is connected with each other.
+There can be more examples of complete graph.
+A---B, it's also a complete graph with only a single edge.
+A, it's also a complete graph without an edge.
 
 To calculate the number of edges in a complete graph with n nodes, you need to
 know that every node is connected to every other node. Therefore, for each of

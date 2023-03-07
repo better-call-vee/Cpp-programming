@@ -2,12 +2,16 @@
 //algorithm grows with the input size in the worst case, and it is not affected
 //by the specific input values used for testing the algorithm.
 
+//1+2+3+...n = n*(n+1)/2;
+
 //They are used to judge a program's worth
 //a good computer can run 10^8 to 10^9 operations at a time
-//O(1) -> Constant time.
+//O(1) -> Constant time. (any constant time suppose, O(100) will be O(1) as well)
 //O(n) -> Linear time.
 //O(nlogn), O(logn), O(sqrt(n)), O(n^2/n^3/n^k)polynomial, O(c^n) c=1,2,3..exponen.
 //Exponential time complexities are the worst
+
+
 
 //if-else condition is an example of constant operation O(1)
 //loop depends on n. so it can't be constant operation
