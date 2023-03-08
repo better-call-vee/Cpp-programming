@@ -16,9 +16,13 @@
 //if-else condition is an example of constant operation O(1)
 //loop depends on n. so it can't be constant operation
 
-//int n; cin>>n; TC -> O(1)
-//vector<int>a(n); TC -> O(n). because it will find n numbered consecutive space
-//but, vector<int>a; TC -> O(1).
+//int n; cin>>n; SC -> O(1)
+//vector<int>a(n); SC -> O(n). because it will find n numbered consecutive space
+//but, vector<int>a; SC -> O(1). but if we push_back elements here, space
+//complexity will be changed by input, O(n).
+//2D array's space complexity is O(n^2)
+//int ar[n][n], int ar[n][n][n]. the space complexity for these two will be
+//O(n^3)
 
 //for(int i=1; i*i<=n; i++) -> this loop runs until i square is less/equals to n.
 //so, time complexity will be O(sqrt(n)).
