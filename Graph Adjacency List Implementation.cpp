@@ -11,6 +11,9 @@
 //same way implementation for directed and weighted graph. already have been
 //discussed in the theory file.
 
+
+//vector's vector method. here, every vector's element(nodes) has another
+//vector for containing the edges
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -39,7 +42,7 @@ int main ()
 // 2 \  / 4
 //    v/
 //    02
-    adjwlist[0].push_back({1,3});
+    adjwlist[0].push_back({1,3}); //pair of vectors.
     adjwlist[2].push_back({1,4});
     adjwlist[0].push_back({2,2});
 
@@ -58,7 +61,7 @@ int main ()
     for(int i=0; i<3; i++)
     {
         cout<<i<<" -> ";
-        for(int j=0; j<adjwlist[i].size(); j++)
+        for(int j=0; j<adjwlist[i].size(); j++) //pair's each vector has another vector
         {
             cout<<"("<<adjwlist[i][j].first<<","<<adjwlist[i][j].second<<")"<<" ";
         }
