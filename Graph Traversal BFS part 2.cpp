@@ -1,6 +1,7 @@
 /**
 
 It's for a cyclic graph.
+THE UNVISITEDS GET PUSHED, THE SELECTED GETS POPPED.
 
 4---5---1
  \  |\  |  Like I said before, BFS is level by level order. look, at first 5 and 3
