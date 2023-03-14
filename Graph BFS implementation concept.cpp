@@ -25,10 +25,12 @@ void bfs (int s)
     {
         int node = q.front(); //selecting the front node from the queue and
         //storing in a variable.
+
         q.pop(); //popping the front element from the queue so that next time
-        //we can selected the next node, lol I am being too scratch just for me
+        //we can selected the next node, lol I am being too naive just for me
         //so that I can understand this later from anywhere of the world, may
         //Allah bless me.
+
         for(int child : adj[node])   //exploring the selected node. selected
             //node's children, vector's vector concept.
         {
