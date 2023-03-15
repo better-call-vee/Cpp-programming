@@ -7,26 +7,35 @@ int n;
 int fibonacci(int n,vector<int> &memo)
 {
     if(n<=1) return n; //if n=0, will return 0. if n=1, will return 1.
+    //look, the smallest problem is this base case.
+
     if (memo[n] != 0) return memo[n]; // Check if the value has already been
     //calculated
 
-    memo[n] = fibonacci(n-1,memo) + fibonacci(n-2,memo); // Calculate the value and
-    //store it in the memo array
+    memo[n] = fibonacci(n-1,memo) + fibonacci(n-2,memo);
+    // Calculate the value and store it in the memo array
     return memo[n];
 }
 
 int main()
 {
     cin>>n;
-    vector<int> memo(n+1);
-    for(int i=0; i<=n; i++)
+    vector<int>memo(n);
+
+    for(int i=0; i<n; i++)
     {
-        cout<<fibonacci(i,memo)<<" ";
+        cout<<fibonacci(i,memo)<<" "; //everytime it's giving input of n, first
+        //0, then 1, then 2, then 3....and the values are set to the memo
+        //vector for memorization.
     }
     cout<<endl;
+    cout<<"The "<<n<<"th Fibonacci number is: "<<fibonacci(n-1, memo);
     return 0;
 }
 
+//for calculating nth number, we don't need to use the memorization method.
+//we can just go on with the base case and 15th line, n = instead of memo[n]
+//return n;  fibonacci(n-1)+fibonacci(n-2)
 
 //fibonacci(4)
 //

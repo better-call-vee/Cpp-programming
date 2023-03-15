@@ -40,5 +40,12 @@ For DFS, we go how deep we can go and for BFS, we go level wise.
 The standard implementation of depth-first search (DFS) algorithm uses a "STACK"
 data structure to keep track of the vertices that have been visited but not yet
 explored.
+
+We go to each node only once for DFS traversal, so for that the time complexity
+is O(v)
+And every edge is selected & checked twice, suppose, for 1--2 in the graph,
+for 2, it's checked once with visited array, for 1 also.
+so for that O(2E)
+overall, O(V+E)
 **/
 

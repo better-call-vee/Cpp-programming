@@ -70,7 +70,7 @@ public:
 //   ∑  h*|n/(2^(h+1))| , we are taking the summation for all nodes present
 //   0
 //a complete binary tree will have height from 0 to logn.
-//for calculation privilege purpose and analysis of time complexity, we are making it
+//To make calculation easier and analysis of time complexity, we are making it
 //logn
 //   ∑  h*|n/(2^h)|
 //   0
