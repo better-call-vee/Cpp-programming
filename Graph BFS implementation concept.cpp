@@ -2,8 +2,16 @@
 using namespace std;
 
 const int maxN = 1000;
-vector<int>adj[maxN]; //vector is considered as a 2D array. every vector's
-//each element can contain another vector.
+vector<int>adj[maxN]; //vector is considered as a 2D array. every array's
+//each element can contain another vector/vectors.
+//এটি দিয়ে array এর মধ্যে vector আছে এইরকম বুঝানো হচ্ছে,
+//যেমন: N=3 হলে,
+//[ vector<int> adj_list, vector<int> adj_list, vector<int> adj_list]
+//এইখানে, 1st vector কে access করতে চাইলে adj_list[0] দিয়ে করা যাবে,
+//এখন যদি 1st vector এর 1st element access করতে চাইলে adj_list[0][0] দিয়ে করা যাবে।
+//এইভাবে বাকি গুলো access করা যাবে। ধরুন, আপনার নোড যদি চারটা হয় তাহলে চারটা নোডের একটা অ্যারে ক্রিয়েট হবে(adj[4])
+//এবং অ্যারে এর প্রত্যেকটা ইনডেক্সে একটা করে ভেক্ট্রর রাখতে পারবেন যেখানে একটা নোড কয়টা নোডের সাথে কানেক্টেড সেই
+//নোড গুলো থাকবে। this concept is called nesting in vector.
 
 //now the visited and queue formulas were described in the theory codes.
 
