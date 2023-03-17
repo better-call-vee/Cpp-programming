@@ -111,7 +111,8 @@ int main ()
                 //adjacent because that will be a self loop.
             {
                 adj[v[i]].push_back(v[j]); //pushing the adjacents for specific
-                //nodes in the map.
+                //nodes in the map. here we are taking all the nodes as the
+                //selected node's adjacent nodes expect itself.
             }
         }
     }
