@@ -45,7 +45,8 @@ void bfs(ll s)
 
     while(!q.empty())
     {
-        if(ans.size()==n) //when we will get the answer sequence.
+        if(ans.size()==n) //when we will get the answer sequence. the answer's
+//size will only be equivalent to
         {
             found = true;
             return;
@@ -102,7 +103,8 @@ int main ()
     {
         cin >> v[i];
     }
-    //it'll be a complete undirected graph, so:
+    //it'll be a complete(each node will be connected with all nodes)
+    //undirected graph, so:
     for(int i=0; i<n; i++)
     {
         for(int j=0; j<n; j++)
