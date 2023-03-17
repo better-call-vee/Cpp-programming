@@ -64,7 +64,9 @@ void bfs(ll s)
                 break; //after getting the desired child, we don't need to
                 //look for the rest. then we will move on for the next.
                 //suppose, selected node is 3 now, we get the child according
-                //to the condition which is 6. now we will move on to 6.
+                //to the condition which is 6. now we will move on to 6. Because
+                //we have to check the conditions for each of the value. when we
+                //go beyond 3, the next is 6, so for 6 we have different conditions
             }
             else if((parent%3==0) && (parent/3==child) && !visited[child])
             {
@@ -81,7 +83,8 @@ void bfs(ll s)
     }
 }
 
-void init () {   //if we couldn't find the actual ans, then we have to clear
+void init ()     //if we couldn't find the actual ans, then we have to clear
+{
     //it again and have to make the visited map clear again. otherwise, it will
     //be an error. we are running the bfs for every node
     ans.clear();
@@ -135,7 +138,8 @@ int main ()
     }
 
     cout<<"\n";
-    for(auto val : ans) {
+    for(auto val : ans)
+    {
         cout << val << " ";
     }
 
