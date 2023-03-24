@@ -97,7 +97,9 @@ void bfs(pair<int, int>src)
         q.pop();
 
         int x = head.first;
-        int y = head.second; //there are four adjacent nodes.
+        int y = head.second;
+//there are four adjacent nodes. right left up down.
+//y for columns, x for rows.
 //in a 2D array. we will get the
 //right -> (x, y + 1)
 //left  -> (x, y - 1)
@@ -140,6 +142,8 @@ void bfs(pair<int, int>src)
 
 int main ()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     cin >> n >> m;
 

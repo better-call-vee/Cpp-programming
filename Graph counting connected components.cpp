@@ -52,3 +52,20 @@ int main ()
 
     return 0;
 }
+
+
+/**
+5 3
+0 1
+1 2
+2 0
+here the answer will be 3. 4 and 5 are not connected but they're two separate
+components and parts of the group
+
+5 4
+0 1
+1 2
+2 3
+3 4
+here the answer will be 1.
+**/

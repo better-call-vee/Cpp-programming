@@ -10,21 +10,22 @@ There are 3 types of node in DFS:
 2. Paused
 3. Done
 
-for a DFS directed graph traversal when we get a paused node, it's considered as a
-cyclic directed graph.
+for a DFS directed graph traversal when we get a paused adjacent node, it's
+considered as a cyclic directed graph.
 
 look at the given example. let's dfs it.
 first 1, it's paused, going to 2. 2 is paused, going to 3. 3 paused, going to 4.
-again, 4 paused, now we will go to 2. But it was paused. As we can see that we are
-moving towards a paused adjacent node, it will be a directed cyclic graph.
+again, 4 paused, now we will go to 2. But it was paused. As we can see that we
+are moving towards a paused adjacent node, it will be a directed cyclic graph.
 
 2--->3
 ^    |    here, starting from 1, 1 paused going 5. now, 5 is only a directed
 |   \ /   adjacent node of 1. So, 1 is marked done. Now we will select a new
-4--->1--->5   node, 2, 2 paused, going on 3. 3 paused, going to 4. 4 paused, going
+4--->1--->5   node, 2, 2 paused, going on 3. 3 paused, going to 4, paused, going
 to 1, 1 is done. so, it's not cyclic yet. going to 2, 2 was paused. it's cyclic
 
-so, for cycle detection, we will check if we find any paused node while traversing.
+SO,
+for cycle detection, we will check if we find any paused node while traversing.
 
 **/
 
@@ -78,7 +79,8 @@ bool detect_cycle(int node)
         if(visited[adj_node] == 0)
         {
             bool got_cycle = detect_cycle(adj_node);
-            if(got_cycle) return true;
+            if(got_cycle) return true; //once we got cycle there is no other
+            //recursion we should continue;
         }
         else if(visited[adj_node] == 1) return true;
         //we don't need to write any continue statement at the end of the loop
@@ -109,7 +111,8 @@ int main ()
             bool got_cycle = detect_cycle(i);
             if(got_cycle)
             {
-                cycle_exists = true;
+                cycle_exists = true; //we will be able to detect the cycle
+                //by the loop. if not the loop will end with false output.
                 break;
             }
         }
