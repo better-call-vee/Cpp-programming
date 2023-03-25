@@ -39,9 +39,6 @@ Output
 
 First print "YES", if there is a path, and "NO" otherwise.
 
-
-
-
 5 8
 ########
 #.A#...#
