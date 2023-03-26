@@ -30,8 +30,10 @@ D the biatch got only two adjacent nodes which are E, B. D->E distance is 20. Bu
 a distance stored which is 5. So, E dick will get 25.
 Now if we measure B's distance in path of D, we will get 5+10=>15 which is greater than previously
 assigned B's distance.
-**Each time, while the new distances are replacing the old distances, they are being measured. The less
-you are the better.
+
+**Each time, while the new distances are replacing the old distances,they are being measured. The less
+you are the better. This attempt is called "RELAXATION"
+
 Done with D, we won't consider again the nodes with whom we are done. 
 
 Now, the least distance stored node is B among the valid nodes. This biatch also got two mofos(C & E).
@@ -71,4 +73,83 @@ A------>B------>C
 D------>E---------↗
    20        2
 
+*/
+
+/*
+Let's simulate another banger, baby calm down.
+But It's Undirected.
+B          E
+| \4    3/   \2
+|   \   /      \
+|4    C-----6---D        
+|   /  \ 1    /
+| /2     \  /3
+A          F
+
+METHOD OF RELAXATION:
+if(d[u] + c(u,v) < d[v])  d[v] = d[u] + c(u,v)
+Suppose, two nodes, u and v. If d[v] from source node is less than d[u] + cost of u and v's edge, then
+we will go for relaxation and change the v's distance.
+
+At first we measure the distances from the source node we selected, the source node we selected is
+B. So, we get the distances. Among them, B now has the least distance which is 0, thus we select
+B as our next selected node. Let's explore this bitch with a B.
+
+B has two adj nodes, C and A. Here comes the method of relaxation.
+d[B] + c(B, C) < d[C]
+=0+4 < ∞
+=true. C calm down(relaxed) d[C] = 4
+Same goes for A, A is also relaxed with distance 4.
+
+Here to select the next among the valid nodes(B is invalid now). A and C have the least distances. 
+Okay, let's select C for Calm Down.
+C has 4 adj nodes(B, D, E, F)
+B => d[C] + c(B, C) => 4+4 => 8, which is not less than B's set distance. So, ignored.
+D => d[C] + c(D, C) => 4+6 => 10, which is less than d[D] which was infinity. So, relaxed.
+E => d[C] + c(E, C) => 4+3 => 7, which is less than d[E] which was infinity. So, relaxed.
+F => d[C] + c(F, C) => 4+1 => 5, which is less than d[F] which was infinity. So, relaxed.
+
+Now, C done. Next valid least node is d[A]. Same method. No one gets relaxed
+Now, F. D got less distance. D relaxed.
+Now, E. Nobody gets relaxed
+Now, The last one, D. No change again. We're done.
+
+Selected        Distances
+Node    
+                A         B          C          D          E          F
+-              (∞)        0         (∞)        (∞)        (∞)        (∞)
+B               4         0          4         (∞)        (∞)        (∞)     B☑️
+C               4         0          4          10         7          5      C☑️
+A               4         0          4          10         7          5      A☑️
+F               4         0          4          8          7          5      F☑️
+E               4         0          4          8          7          5      E☑️
+D               4         0          4          8          7          5      D☑️
+
+
+*/
+
+/*
+Pseudocode and Complexity
+
+input -> a weighted graph and a source
+output -> distance of all nodes from the source
+ 
+- Create a distance array "d"     S[O(n)] , we will take all the nodes here
+- Initialize all the values of "d" to infinity(a very large value like 1e5)
+- d[src] = 0
+- Create a visited array and mark all nodes as unvisited      S[O(n)]
+
+- for i = 0 to n - 1: T(O(n^2))  //there will be inner loop working for 143th line
+     - pick the "unvisited node with the least d[node]" 
+     - visited[node] = 1
+     - for all adj_node of node: T[O(E)] it's complexity is O(E), previously explained
+          -if d[node] + c(node, adj_node) < d[adj_node] {
+               -d[adj_node] = d[node] + c(node, adj_node)
+          }
+- output array "d"
+
+Overall Space Complexity -> O(n)
+Overall Time  Complexity -> O(n^2 + E); We know one thing, for worst case scenario, this O(E) becomes
+O(n^2). 
+The Overall Time Complexity -> O(n^2)
 */
