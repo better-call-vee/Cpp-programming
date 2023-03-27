@@ -54,6 +54,8 @@ if there's no bipartition possible, you've to print "IMPOSSIBLE"
 IMPOSSIBLE
 **/
 
+//Try to simulate with an example to understand properly.
+
 #include<bits/stdc++.h>
 using namespace std;
 const int N = 2e5 + 5;
@@ -71,7 +73,7 @@ bool dfs(int node) //it will return true if we can bicolor
     {
         if(visited[adj_node] == 0)
         {
-            //assign different color to adj_node
+            //assign different color to adj_node if it was not visited beforehand. 
             if(color[node] == 1) color[adj_node] = 2;
             else color[adj_node] = 1;
 
@@ -80,7 +82,7 @@ bool dfs(int node) //it will return true if we can bicolor
 //during the recursion, if we find any occurance between two nodes where we are
 //getting false, then we have to stop there and make the whole function false.
         }
-        else
+        else //if the adjacent node was visited prior to this/heretofore/beforehand.
         {
             //check if color is same or different
             if(color[node] == color[adj_node]) return false;
