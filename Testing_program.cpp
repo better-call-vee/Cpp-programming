@@ -1,54 +1,66 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-const int N = 1e5;
-vector<int>nodes[N];
-bool visited[N];
 
-void compcount(int src)
+const int N = 1e5;
+vector<int> roads[N];
+int visited[N];
+
+int part[N];
+
+bool citiesandroads(int src)
 {
-    queue<int> q;
-    q.push(src);
-    visited[src] = true;
-    while(!q.empty())
+    visited[src] = 1;
+    for (int con : roads[src])
     {
-        int curr = q.front();
-        q.pop();
-        for(int next : nodes[curr])
+        if (visited[con] == 0)
         {
-            if(!visited[next])
-            {
-                visited[next] = true;
-                q.push(next);
-            }
+            if (part[src] == 1)
+                part[con] = 2;
+            else
+                part[con] = 1;
+
+            bool done = citiesandroads(con);
+            if (!done)
+                return false;
+        }
+        else
+        {
+            if (part[src] == part[con])
+                return false;
         }
     }
+    return true;
 }
 
-int main ()
+int main()
 {
-    int n, e;
-    cin >> n >> e;
 
-    for(int i=0; i<e; i++)
+    int n, m;
+    cin >> n >> m;
+
+    for (int i = 0; i < m; i++)
     {
-        int one, two;
-        cin >> one >> two;
-        nodes[one].push_back(two);
-        nodes[two].push_back(one);
+        int a, b;
+        cin >> a >> b;
+        roads[a].push_back(b);
+        roads[b].push_back(a);
     }
 
-    int comp = 0;
+    int src = 1;
 
-    for(int i=0; i<n; i++)
+    while (true)
     {
-        if(!visited[i])
+        if (visited[src] == 0)
         {
-            comp++;
-            compcount(i);
+            part[src] = 1;
+            bool ok = citiesandroads(src);
+            if (!ok)
+                break;
         }
+        src++;
+        if (src > n)
+            break;
     }
-
-    cout<<comp;
 
     return 0;
 }

@@ -76,6 +76,8 @@ bool dfs(int node) //it will return true if we can bicolor
             //assign different color to adj_node if it was not visited beforehand. 
             if(color[node] == 1) color[adj_node] = 2;
             else color[adj_node] = 1;
+            //we don't need to assign the visited[adj_node] because it's a recursive
+            //function and the visited[node] is already stated above.
 
             bool is_bicolorable = dfs(adj_node);
             if(!is_bicolorable) return false;
