@@ -9,7 +9,7 @@
 //can take privilege.
 #include<bits/stdc++.h>
 using namespace std;
-
+ 
 class MaxHeap
 {
 public:
