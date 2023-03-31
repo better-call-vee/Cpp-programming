@@ -191,7 +191,7 @@ least distance to go on.
 - output array "d"
 
 
-COMPARE THE 142 & 171 LINES.
+COMPARE THE 142 & 174 LINES.
 suppose a graph:
     10
 A------->B | C
@@ -207,7 +207,7 @@ second part isn't executed at all.
 third loop -> There is nothing to do and the queue is empty as well. It will be an error.
 That's why we will run the loop until the priority queue has at least an element/is not being empty
 
-177th line's loop will run total E times and it's not connected with the outer loop, it's independent
+180th line's loop will run total E times and it's not connected with the outer loop, it's independent
 
 total time complexity :
 O(n) + O(E log E) + O(E log E) 

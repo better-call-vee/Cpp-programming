@@ -45,6 +45,33 @@ So, we will set the parent nodes in an array and we will check if the source nod
 adjacent node or not.
 */
 
+/**
+Problem Statement: https://cses.fi/problemset/task/1678
+
+There are n cities in a country. I have to design a round trip where I can't visit
+a city multiple times but once and I have to start and end at the same city.
+there will be m flight connections. The flight connections will be one way flights
+and thus it's all directed.
+Output the number of cities on the route. Then I have to print the cities in the
+order they will be visited. any valid solution is granted and if there is no
+solution output "IMPOSSIBLE";
+4 5
+1 3
+2 1
+2 4
+3 2
+3 4
+Output:
+4
+2 1 3 2
+
+4 4
+1 3
+2 1
+2 4
+3 4
+No cycle
+**/
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -76,7 +103,9 @@ bool detect_cycle(int node)
             bool got_cycle = detect_cycle(adj_node);
             if (got_cycle)
                 return true; // once we got cycle there is no other
-            // recursion we should continue;
+            // recursion we should continue; in fact it's the base case.
+            //if we would have written it in a way that it returns false, our code would
+            //have not given the correct output.
         }
         else if (visited[adj_node] == 1)
             return true;

@@ -67,3 +67,33 @@ int main () {
     cout<<resum(n);
     return 0;
 }
+
+/**
+#include<bits/stdc++.h>
+using namespace std;
+
+int gotsum (vector<int>a, int n)
+{
+    if(n==1) return a[0];
+
+    return a[n-1] + gotsum(a, n-1);
+}
+
+int main ()
+{
+
+    int n;
+    cin >> n;
+    vector<int>resum;
+
+    for(int i=0; i<n; i++)
+    {
+        int inp;
+        cin >> inp;
+        resum.push_back(inp);
+    }
+
+    cout << gotsum(resum, n);
+    return 0;
+}
+**/
