@@ -59,7 +59,8 @@ int main ()
     cin >> n >> m;
     int starti, startj;
 
-    monster.resize(n, vector<char>(m));
+    monster.resize(n, vector<char>(m)); //this is efficient for adjacency matrix. 
+    //sets all the values of the 2D vector to 0 and resize.
     visited.resize(n, vector<int>(m));
     pp.resize(n, vector<pair<int, int>>(m));
 

@@ -105,7 +105,10 @@ bool detect_cycle(int node)
                 return true; // once we got cycle there is no other
             // recursion we should continue; in fact it's the base case.
             //if we would have written it in a way that it returns false, our code would
-            //have not given the correct output.
+            //have not given the correct output. Because, when got_cycle is true, the code
+            //would continue to explore the graph and would not immediately stop and return
+            //true, which would result in incorrect results. Our motive is if we find only
+            //one cycle, the cycle detection is true! We don't go further.
         }
         else if (visited[adj_node] == 1)
             return true;
