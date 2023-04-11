@@ -1,41 +1,41 @@
-//You and some monsters are in a labyrinth.Your goal is to reach from cell A to
-//one of the safe boundary cell.You can walk left, right, up and down.But you
-//can't go to those cells , if there is a monster in that cell or the cell
-//contains a wall.You can only go to the safe(.) cell.
+// You and some monsters are in a labyrinth.Your goal is to reach from cell A to
+// one of the safe boundary cell.You can walk left, right, up and down.But you
+// can't go to those cells , if there is a monster in that cell or the cell
+// contains a wall.You can only go to the safe(.) cell.
 
-
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int n, m;
-vector<vector<char>>monster;
-vector<vector<int>>visited;
-pair<int, int>END;
-vector<vector<pair<int, int>>>pp;
+vector<vector<char>> monster;
+vector<vector<int>> visited;
+pair<int, int> END;
+vector<vector<pair<int, int>>> pp;
 int v[4] = {1, -1, 0, 0};
 int h[4] = {0, 0, -1, 1};
 char dir[4] = {'D', 'U', 'L', 'R'};
 bool gotcha = false;
-vector<pair<int, int>>way;
+vector<pair<int, int>> way;
 
 void montra(int x, int y)
 {
 
-    queue<pair<int, int>>tra;
+    queue<pair<int, int>> tra;
     tra.push({x, y});
     visited[x][y] = 1;
     pp[x][y] = {-1, -1};
 
-    while(!tra.empty())
+    while (!tra.empty())
     {
-        pair<int, int>go = tra.front();
+        pair<int, int> go = tra.front();
         tra.pop();
-        if(gotcha) break;
-        for(int i=0; i<4; i++)
+        if (gotcha)
+            break;
+        for (int i = 0; i < 4; i++)
         {
-            int dv = go.first+v[i];
-            int dh = go.second+h[i];
-            if((monster[dv][dh]=='.') && ((dv==0||dv==n-1) || (dh==0||dh==n-1)))
+            int dv = go.first + v[i];
+            int dh = go.second + h[i];
+            if ((monster[dv][dh] == '.') && ((dv == 0 || dv == n - 1) || (dh == 0 || dh == n - 1)))
             {
                 visited[dv][dh] = 1;
                 pp[dv][dh] = go;
@@ -44,7 +44,7 @@ void montra(int x, int y)
                 gotcha = true;
                 break;
             }
-            else if(monster[dv][dh]!='#' && monster[dv][dh]!='M' && visited[dv][dh]==0)
+            else if (monster[dv][dh] != '#' && monster[dv][dh] != 'M' && visited[dv][dh] == 0)
             {
                 visited[dv][dh] = 1;
                 pp[dv][dh] = go;
@@ -54,22 +54,31 @@ void montra(int x, int y)
     }
 }
 
-int main ()
+int main()
 {
     cin >> n >> m;
     int starti, startj;
 
-    monster.resize(n, vector<char>(m)); //this is efficient for adjacency matrix. 
-    //sets all the values of the 2D vector to 0 and resize.
+    monster.resize(n, vector<char>(m)); /* this is efficient for adjacency matrix.
+    sets all the values of the 2D vector to 0 and resize.
+    The resize() function call on the monster vector resizes it to have n elements, where each element
+    is a vector of m characters.It's actually working like this:
+    
+    monster.resize(n);
+    for (int i = 0; i < n; i++)
+    {
+        monster[i].resize(m);
+    }
+    */
     visited.resize(n, vector<int>(m));
     pp.resize(n, vector<pair<int, int>>(m));
 
-    for(int i=0; i<n; i++)
+    for (int i = 0; i < n; i++)
     {
-        for(int j=0; j<m; j++)
+        for (int j = 0; j < m; j++)
         {
             cin >> monster[i][j];
-            if(monster[i][j] == 'A')
+            if (monster[i][j] == 'A')
             {
                 starti = i;
                 startj = j;
@@ -79,18 +88,18 @@ int main ()
 
     montra(starti, startj);
 
-    if(gotcha)
+    if (gotcha)
     {
-        cout<<"YES\n";
+        cout << "YES\n";
 
         int x = END.first;
         int y = END.second;
 
         way.push_back({x, y});
 
-        while(pp[x][y] != make_pair(-1, -1))
+        while (pp[x][y] != make_pair(-1, -1))
         {
-            pair<int, int>p = pp[x][y];
+            pair<int, int> p = pp[x][y];
             x = p.first;
             y = p.second;
             way.push_back({x, y});
@@ -100,13 +109,13 @@ int main ()
     reverse(way.begin(), way.end());
 
     string ans;
-    for(int i=0; i<way.size()-1; i++)
+    for (int i = 0; i < way.size() - 1; i++)
     {
-        for(int j=0; j<4; j++)
+        for (int j = 0; j < 4; j++)
         {
             int nv = way[i].first + v[j];
             int nh = way[i].second + h[j];
-            if((nv==way[i+1].first) && (nh==way[i+1].second))
+            if ((nv == way[i + 1].first) && (nh == way[i + 1].second))
             {
                 ans.push_back(dir[j]);
                 break;
@@ -114,7 +123,8 @@ int main ()
         }
     }
 
-    cout<<ans.size()<<"\n"<<ans;
+    cout << ans.size() << "\n"
+         << ans;
 
     return 0;
 }

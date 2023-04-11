@@ -71,4 +71,33 @@ done
 SUMMARY: WE CAN FIND THE SHORTEST PATHS BY ITERATION ON EDGES AND THERE WILL BE AT MOST NUMBER OF
 NODES-1 ITERATIONS.
 
+
+
+n-> number of nodes
+m-> number of edges
+PSEUDOCODE:
+Input -> A weighted graph & a source node (with no negative cycle)
+Output -> Shortest distance from source node to all other nodes
+
+- Create a distance array "d" with all values set to infinity  {TC => O(n)}
+- d[source] = 0  {O(1)}
+
+negative_cycle = false
+
+for i=1 to n :   {O(n)}
+     for all edges e(u, v, w):      means u to v is a direct edge which cost w.  {O(m)}
+         if d[u] + w < d[v]
+         => d[v] = d[u] + w
+         -if i==n: 
+            -negative_cycle = true
+{for the nested loop O(n*m)}
+
+- print the distance array "d" {O(n)}
+
+Total Time Complexity :
+O(n) + O(1) + O(n*m) + O(n)
+=> O(n*m)
+=> O(|V| * |E|);    
+for worst case it will run with O(V^3) time complexity. (E=V^2)
+Space complexity => O(n)
 */
