@@ -8,8 +8,23 @@ class Edge
 public:
     int a, b;
     long long c;
-    Edge() : a(0), b(0), c(0) {}
+    Edge() : a(0), b(0), c(0) {} //default constructor.
+    /*
+    Edge() {
+        a = 0;
+        b = 0;
+        c = 0;
+    }
+    */
     Edge(int a, int b, long long c) : a(a), b(b), c(c) {}
+    /*
+    constructing every input and edge. parameterized constructor
+    Edge(int a, int b, long long c) {
+        this->a = a;
+        this->b = b;
+        this->c = c;
+    }
+    */
 };
 
 vector<Edge> thelist;
@@ -21,7 +36,10 @@ int main()
     int n, m;
     cin >> n >> m;
 
-    thelist.resize(m);
+    thelist.resize(m); //we are resizing to the size of edge number because
+    //we will consider the algorithm according to the edges. We can't do it
+    //with node by node, for that we need vector of vector which is more
+    //tiresome.
     dist.resize(n + 1, INF);
     parent.resize(n + 1);
 
@@ -64,6 +82,8 @@ int main()
 
         vector<int> path;
         for (int cur = lastone;; cur = parent[cur])
+//it's an infinite loop, for every iteration the cur is being set to it's parent
+//node.
         {
             path.push_back(cur);
             if (cur == lastone && path.size() > 1)
@@ -82,3 +102,40 @@ int main()
 
     return 0;
 }
+
+/**
+Sample Input 1-
+
+4 5
+1 2 2
+2 3 2
+1 4 1
+3 1 -7
+3 4 -2
+
+Sample Output 1-
+
+YES
+1 2 3 1
+
+Sample Input 2-
+
+6 11
+1 3 18
+2 4 -5
+3 5 -5
+4 1 -5
+5 6 -6
+6 1 3
+1 2 19
+2 3 -5
+3 4 -5
+4 5 -5
+5 1 -5
+
+Sample Output 2-
+
+YES
+1 2 3 4 5 1 / 5 1 2 3 4 5
+
+**/

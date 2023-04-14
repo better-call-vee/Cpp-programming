@@ -38,6 +38,30 @@ int nodes, edges;
 
 priority_queue<pair<long long, int>, vector<pair<long long, int>>, greater<pair<long long, int>>> pq;
 
+/**
+The first part priority_queue is a standard template library container in C++
+that implements a priority queue. A priority queue is a type of container that
+allows for efficient retrieval of the smallest (or largest) element in the
+container.
+
+The angle brackets <> specify the template parameters that the priority_queue is
+using. In this case, it's using a pair of long long and int as its value type.
+A pair is a C++ template class that holds two values of potentially different
+types.
+
+The second parameter in the angle brackets, vector<pair<long long, int>>,
+specifies the underlying container that the priority queue is using to store
+its elements. In this case, it's a vector of pairs of long long and int. A
+vector is a dynamic array that can grow or shrink in size as needed.
+
+The third parameter, greater<pair<long long, int>>, specifies the comparison
+function that will be used to compare the elements in the priority queue. The
+greater function is a pre-defined C++ function object that compares two values
+and returns true if the first value is greater than the second value. In this
+case, it's being used to sort the elements in the priority queue in ascending
+order based on the first value in the pair, which is the long long.
+**/
+
 void dijkstra(int src)
 {
 

@@ -40,7 +40,8 @@ int main()
 
     bool negative_cycle = false;
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= n; i++)     //we need at most n-1 iteration but for cycle detection we need
+    //n
     {
         for (int node = 1; node <= n; node++)
         {
