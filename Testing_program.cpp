@@ -1,84 +1,31 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-const long long INF = LLONG_MAX;
-
-class Edge
-{
-public:
-    int a, b;
-    long long c;
-    Edge() : a(0), b(0), c(0) {}
-    Edge(int a, int b, long long c) : a(a), b(b), c(c) {}
-};
-
-vector<Edge> thelist;
-vector<long long> dist;
-vector<int> parent;
+#include <stdio.h>
 
 int main()
 {
-    int n, m;
-    cin >> n >> m;
-
-    thelist.resize(m);
-    dist.resize(n + 1, INF);
-    parent.resize(n + 1);
-
-    for (int i = 0; i < m; i++)
-    {
-        int a, b;
-        long long c;
-        cin >> a >> b >> c;
-        thelist[i] = Edge(a, b, c);
+    char check;
+    scanf("%c", &check);
+    if(check == ' ') {
+        printf("It is a whitespace character\n");
     }
-
-    int source = 1;
-    dist[source] = 0;
-
-    int lastone = -1;
-
-    for (int i = 1; i <= n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            Edge eds = thelist[j];
-            int u = eds.a;
-            int v = eds.b;
-            long long w = eds.c;
-            if (dist[v] > dist[u] + w)
-            {
-                dist[v] = dist[u] + w;
-                parent[v] = u;
-                lastone = v;
-            }
-        }
-    }
-
-    if (lastone != -1)
-    {
-        for (int i = 1; i <= n-1; i++)
-        {
-            lastone = parent[lastone];
-        }
-
-        vector<int> path;
-        for (int cur = lastone;; cur = parent[cur])
-        {
-            path.push_back(cur);
-            if (cur == lastone && path.size() > 1)
-                break;
-        }
-
-        reverse(path.begin(), path.end());
-
-        cout << "YES\n";
-        for (int v : path)
-            cout << v << " ";
-    }
-
-    else
-        cout << "NO";
+    else printf("It is not a whitespace character\n");
 
     return 0;
 }
+
+
+
+
+/*
+GCD is the greatest common divisor of the given numbers. So, to
+find GCD we have to loop through the numbers and check if a number
+divides them both or not. And then we have to find the greatest among
+the divisors if multiple divisors are there.
+Here in the program, we take two numbers at first and then we
+set the value of GCD to 1 because if no number is found, 1 will be the
+usual GCD of them.
+Then we run a for loop from 1 to the greater number of the two numbers
+given by using the condition (i<=one && i<=two). Everytime we check if
+the i divides both one and two! If yes, then we change the GCD because
+everytime the i is increasing.
+Finally, we print the GCD.
+*/
