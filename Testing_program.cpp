@@ -1,31 +1,42 @@
-#include <stdio.h>
+#include<bits/stdc++.h>
+using namespace std;
 
-int main()
+const int n = 31;
+int fibcheck[n];
+
+int memofib(int nth)
 {
-    char check;
-    scanf("%c", &check);
-    if(check == ' ') {
-        printf("It is a whitespace character\n");
+
+    if(nth==0) return 0;
+    if(nth<=2) return 1;
+
+    if(fibcheck[nth] != -1) return fibcheck[nth];
+
+    int ans = memofib(nth-1) + memofib(nth-2);
+    fibcheck[nth] = ans;
+    return ans;
+
+}
+
+int main ()
+{
+
+    int th_fib;
+    cin >> th_fib;
+
+    memset(fibcheck, -1, sizeof(fibcheck));
+
+    fibcheck[0] = 0;
+    fibcheck[1] = 1;
+    fibcheck[2] = 1;
+
+    for(int i=3; i<=n; i++)
+    {
+        fibcheck[i] = fibcheck[i-1] + fibcheck[i-2];
     }
-    else printf("It is not a whitespace character\n");
+
+    cout<<"Memorization Output => "<<memofib(th_fib)<<"\n";
+    cout<<"Tabulation Output => "<<fibcheck[th_fib];
 
     return 0;
 }
-
-
-
-
-/*
-GCD is the greatest common divisor of the given numbers. So, to
-find GCD we have to loop through the numbers and check if a number
-divides them both or not. And then we have to find the greatest among
-the divisors if multiple divisors are there.
-Here in the program, we take two numbers at first and then we
-set the value of GCD to 1 because if no number is found, 1 will be the
-usual GCD of them.
-Then we run a for loop from 1 to the greater number of the two numbers
-given by using the condition (i<=one && i<=two). Everytime we check if
-the i divides both one and two! If yes, then we change the GCD because
-everytime the i is increasing.
-Finally, we print the GCD.
-*/

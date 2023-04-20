@@ -20,6 +20,7 @@ int main () {
     int n;
     cin >> n;
 
+    dp[0] = 0;     //base case
     dp[1] = 1;     //base case
     dp[2] = 1;     //base case
 

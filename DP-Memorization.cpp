@@ -21,20 +21,23 @@ using namespace std;
 const int N = 101;
 long long dp[N];
 
-int fib(int n)  
+int fib(int n)
 {
     // if(n == 1) return 1;  //step 1
     // if(n == 2) return 1;
 
-    if (n <= 2)  
+    if (n == 0)
+        return 0;
+
+    if (n <= 2)
         return 1;
 
-    if (dp[n] != -1)  //step 2
+    if (dp[n] != -1)  // step 2
         return dp[n]; // checking if current state is already solved.
 
     // calculating from smaller subproblems.
     long long ans = fib(n - 1) + fib(n - 2);
-    dp[n] = ans; //step 3
+    dp[n] = ans; // step 3
     return ans;
 }
 
