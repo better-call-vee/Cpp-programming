@@ -1,42 +1,44 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-const int n = 31;
-int fibcheck[n];
-
-int memofib(int nth)
-{
-
-    if(nth==0) return 0;
-    if(nth<=2) return 1;
-
-    if(fibcheck[nth] != -1) return fibcheck[nth];
-
-    int ans = memofib(nth-1) + memofib(nth-2);
-    fibcheck[nth] = ans;
-    return ans;
-
-}
+const int N = 10005;
+long long coins[N];
+long long mcoins[N];
+long long ans = -1;
 
 int main ()
 {
 
-    int th_fib;
-    cin >> th_fib;
+    int tc;
+    cin >> tc;
 
-    memset(fibcheck, -1, sizeof(fibcheck));
-
-    fibcheck[0] = 0;
-    fibcheck[1] = 1;
-    fibcheck[2] = 1;
-
-    for(int i=3; i<=n; i++)
+    for(int case_=1; case_<=tc; case_++)
     {
-        fibcheck[i] = fibcheck[i-1] + fibcheck[i-2];
-    }
+        int monsters;
+        cin >> monsters;
 
-    cout<<"Memorization Output => "<<memofib(th_fib)<<"\n";
-    cout<<"Tabulation Output => "<<fibcheck[th_fib];
+        memset(mcoins, -1, sizeof(mcoins));
+
+        for(int j=1; j<=monsters; j++)
+            cin>>coins[j];
+
+        mcoins[0] = 0;
+        mcoins[1] = coins[1];
+
+        for(int i=2; i<=monsters; i++)
+        {
+            long long ans1 = mcoins[i - 1];
+            long long ans2 = coins[i] + mcoins[i - 2];
+            ans = max(ans1, ans2);
+
+            mcoins[i] = ans;
+        }
+
+        cout<<"Case "<<case_<<": "<<mcoins[monsters]<<"\n";
+    }
 
     return 0;
 }
+
+
+
