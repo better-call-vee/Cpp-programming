@@ -39,3 +39,28 @@ There are two techniques:
 2) Tabulation/Iterative/Bottom-Up
 
 Memorization/Recursion is the most used method.
+
+
+To create this type of recursive and base cases, we need to analyze the problem and identify the
+repetitive subproblems that can be solved using recursion. We also need to identify the base cases,
+which are the termination conditions of the recursion. We can understand this by breaking down the
+problem into smaller subproblems and solving them recursively until we reach the base case.
+
+Start by understanding the problem statement and the requirements for the solution. Try to identify
+the main problem and any subproblems that may exist.
+
+Break down the problem into smaller subproblems that can be solved recursively. Think about the
+different ways you can approach the problem and try to identify any patterns or repetitions that
+you can take advantage of.
+
+Consider the input space of the problem and try to identify any common inputs or patterns that may
+exist. For example, in the case of this problem, we know that we are trying to reach a target number
+of 1, so we can consider how we can reduce the given number to 1 using the three operations provided.
+(The problem is finding the minimum steps to reach 1 from any number)
+
+Once you have identified the subproblems, think about how you can solve them recursively. Start with
+the base cases and work your way up to the larger subproblems. Consider any edge cases that may need
+to be handled separately.
+
+Test your solution with different inputs and verify that it provides the correct output. If you
+encounter any issues or errors, debug your solution and try to identify the source of the problem.

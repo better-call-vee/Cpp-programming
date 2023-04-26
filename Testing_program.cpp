@@ -1,44 +1,42 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-const int N = 10005;
-long long coins[N];
-long long mcoins[N];
-long long ans = -1;
+long long countarr[100007], n;
+long long dparr[100007];
 
-int main ()
+long long boredom(int i)
+{
+    if (i < 0)
+        return 0;
+
+    if (dparr[i] != -1)
+        return dparr[i];
+
+    long long ans = max(boredom(i - 1), boredom(i - 2) + i * countarr[i]);
+
+    dparr[i] = ans;
+    return ans;
+}
+
+int main()
 {
 
-    int tc;
-    cin >> tc;
+    memset(dparr, -1, sizeof(dparr));
+    cin >> n;
 
-    for(int case_=1; case_<=tc; case_++)
+    long long maxo = 0;
+    for (int i = 0; i < n; i++)
     {
-        int monsters;
-        cin >> monsters;
-
-        memset(mcoins, -1, sizeof(mcoins));
-
-        for(int j=1; j<=monsters; j++)
-            cin>>coins[j];
-
-        mcoins[0] = 0;
-        mcoins[1] = coins[1];
-
-        for(int i=2; i<=monsters; i++)
-        {
-            long long ans1 = mcoins[i - 1];
-            long long ans2 = coins[i] + mcoins[i - 2];
-            ans = max(ans1, ans2);
-
-            mcoins[i] = ans;
-        }
-
-        cout<<"Case "<<case_<<": "<<mcoins[monsters]<<"\n";
+        int j;
+        cin >> j;
+        countarr[j]++;
+        maxo = max(maxo, (long long)j);
     }
+
+    dparr[0] = 0;
+    dparr[1] = countarr[1];
+
+    cout << boredom(maxo);
 
     return 0;
 }
-
-
-
