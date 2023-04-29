@@ -59,11 +59,23 @@ int vangti(int v)
                 ans = min(ans, subans + 1); // Update ans with the minimum number of coins required
         }
 
-        subans + 1 calculates the number of coins required to reach the value v from the value v - coins[i], assuming that we use one coin of value coins[i]. In other words, if we already know the minimum number of coins required to reach the value v - coins[i], we can use one more coin of value coins[i] to reach the value v and obtain a solution with subans + 1 coins.
+        subans + 1 calculates the number of coins required to reach the value v from the value 
+        v - coins[i], assuming that we use one coin of value coins[i]. In other words, if we already 
+        know the minimum number of coins required to reach the value v - coins[i], we can use one more
+        coin of value coins[i] to reach the value v and obtain a solution with subans + 1 coins.
 
-        For example, let's say we want to reach the value v = 11, and we have two coins with values coins = {1, 5, 7}. Suppose we have already computed the minimum number of coins required to reach the value v - coins[i] for all i, and we have dparr = {0, 1, -1, 2, -1, 1, -1, 2, ...} (where -1 means that the value cannot be reached). If we consider the coin with value coins[2] = 5, we can use one coin of value 5 to reach the value v - coins[2] = 6, which requires dparr[6] = 2 coins. Therefore, we can reach the value v = 11 using dparr[6] + 1 = 3 coins (i.e., one coin of value 5 and two coins of value 1), which is the minimum number of coins required.
+        For example, let's say we want to reach the value v = 11, and we have two coins with values
+        coins = {1, 5, 7}. Suppose we have already computed the minimum number of coins required to
+        reach the value v - coins[i] for all i, and we have dparr = {0, 1, -1, 2, -1, 1, -1, 2, ...}
+        (where -1 means that the value cannot be reached). If we consider the coin with value c
+        oins[2] = 5, we can use one coin of value 5 to reach the value v - coins[2] = 6, which requires
+        dparr[6] = 2 coins. Therefore, we can reach the value v = 11 using dparr[6] + 1 = 3 coins
+        (i.e., one coin of value 5 and two coins of value 1), which is the minimum number of coins
+        required.
 
-        So, the expression ans = min(ans, subans+1) updates the minimum number of coins required to reach the value v by considering all possible coins i, and choosing the coin that leads to the minimum number of coins required.
+        So, the expression ans = min(ans, subans+1) updates the minimum number of coins required to
+        reach the value v by considering all possible coins i, and choosing the coin that leads to the
+        minimum number of coins required.
 
     }
 
@@ -135,11 +147,17 @@ int main()
         // iterate over all the possible sums that can be made using this coin
         for (int j = coins[i]; j <= x; j++)
         /*
-The inner for loop in the code starts from the value of j equal to coins[i], which is the value of the current coin being considered in the outer loop. This is because if j is less than coins[i], then we cannot make a coin change of value coins[i] with j value, and we need to skip it.
+The inner for loop in the code starts from the value of j equal to coins[i], which is the value of the
+current coin being considered in the outer loop. This is because if j is less than coins[i], then we
+cannot make a coin change of value coins[i] with j value, and we need to skip it.
 
-For example, if we have coins with denominations [1, 2, 5] and we are trying to make change for x = 7, we start by considering the first coin with denomination 1. If we start the inner loop from j = 1, then we can make a coin change of value 1 for all values of j starting from 1. If we start the inner loop from j = 2, then we cannot make a coin change of value 1 for j = 2, and we need to skip it.
+For example, if we have coins with denominations [1, 2, 5] and we are trying to make change for x = 7,
+we start by considering the first coin with denomination 1. If we start the inner loop from j = 1,
+then we can make a coin change of value 1 for all values of j starting from 1. If we start the inner
+loop from j = 2, then we cannot make a coin change of value 1 for j = 2, and we need to skip it.
 
-Starting the inner loop from coins[i] ensures that we consider all possible coin changes that can be made with the current coin denomination.
+Starting the inner loop from coins[i] ensures that we consider all possible coin changes that can be
+made with the current coin denomination.
         */
         {
             // if it's possible to make the sum j using coins[i], update dp[j]
