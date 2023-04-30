@@ -158,6 +158,7 @@ loop from j = 2, then we cannot make a coin change of value 1 for j = 2, and we 
 
 Starting the inner loop from coins[i] ensures that we consider all possible coin changes that can be
 made with the current coin denomination.
+This is the thing which makes the difference from the recursive approach!
         */
         {
             // if it's possible to make the sum j using coins[i], update dp[j]
