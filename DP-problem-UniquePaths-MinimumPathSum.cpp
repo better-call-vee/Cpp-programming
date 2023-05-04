@@ -45,15 +45,13 @@ int minimumPathSum(int n, int m)
         return dp[n][m];
 
     int ans = INT_MAX;
-    int ans1 = INT_MAX;
-    int ans2 = INT_MAX;
 
     if (n > 0)
-        ans1 = min(ans1, minimumPathSum(n - 1, m) + arr[n][m]);
+        ans = min(ans, minimumPathSum(n - 1, m) + arr[n][m]);
     if (m > 0)
-        ans2 = min(ans2, minimumPathSum(n, m - 1) + arr[n][m]); // here are the changes.
+        ans = min(ans, minimumPathSum(n, m - 1) + arr[n][m]); // here are the changes. we have to
+    // take the minimum of them.
 
-    ans = min(ans1, ans2);
     dp[n][m] = ans;
     return ans;
 }
@@ -74,9 +72,8 @@ int main()
         }
     }
 
-    fill_n(&dp[0][0], N * N, -1);
+    memset(dp, -1, sizeof(dp));
 
     cout << minimumPathSum(row - 1, col - 1);
-
     return 0;
 }
