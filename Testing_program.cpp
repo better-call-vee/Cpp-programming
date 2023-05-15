@@ -1,61 +1,49 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n;
-int x;
-
-int BFS(int src)
+int main()
 {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+    int n;
+    scanf("%d", &n);
+    long long x;
+    scanf("%lli", &x);
+
     queue<long long> q;
-    q.push(src);
-    map<long long, int> m;
-    m.insert({src, 0});
-    int cnt = 0;
+    map<long long, int> ops;
+
+    ops[x] = 0;
+    q.push(x);
+
     while (!q.empty())
     {
-        long long head = q.front();
+        long long child = q.front();
         q.pop();
-        string s = to_string(head);
+        string digits = to_string(child);
 
-        if (s.size() == n)
-            return m[head];
-
-        for (auto digit : s)
+        if (digits.size() == n)
         {
-            int x = digit - '0';
+            printf("%d", ops[child]);
+            return 0;
+        }
 
-            if (x == '0')
+        for (auto digit : digits)
+        {
+            if (digit == '0')
                 continue;
 
-            long long newNumber = x * head;
-            int f = 0;
+            long long ydecimal = child * (digit - '0');
 
-            map<long long, int>::iterator it = m.begin();
-            for (; it != m.end(); ++it)
+            if (!ops.count(ydecimal))
             {
-                if (it->first == newNumber)
-                {
-                    f = 1;
-                    break;
-                }
+                ops[ydecimal] = ops[child] + 1;
+                q.push(ydecimal);
             }
-
-            if (f == 0)
-            {
-                q.push(newNumber);
-                m.insert({newNumber, cnt + 1});
-                cnt = cnt + 1;
-            }
-            else
-                f = 0;
         }
     }
 
-    return -1;
-}
+    printf("-1");
 
-int main()
-{
-    cin >> n >> x;
-    cout << BFS(x);
     return 0;
 }
