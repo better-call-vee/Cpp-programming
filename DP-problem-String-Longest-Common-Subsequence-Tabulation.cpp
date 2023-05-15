@@ -18,30 +18,6 @@ vector<vector<int>> dp;
 int n, m;
 string s, t;
 
-int LCS(int i, int j)
-{
-    if (i == n or j == m)
-        return 0;
-
-    if (dp[i][j] != -1)
-        return dp[i][j];
-
-    if (s[i] == t[j])
-    {
-        int ans = 1 + LCS(i + 1, j + 1);
-        dp[i][j] = ans;
-        return ans;
-    }
-    else
-    {
-        int ans1 = LCS(i + 1, j);
-        int ans2 = LCS(i, j + 1);
-        int ans = max(ans1, ans2);
-        dp[i][j] = ans;
-        return ans;
-    }
-}
-
 int main()
 {
     cin >> s >> t;
@@ -85,6 +61,15 @@ int main()
 // We were working i...n, j...m heretofore. LCS on suffix
 // Now we will work on s[0...i], t[0...j]   LCS on prefix
 /*
+
+for(int i=0; i<=n; i++) {
+    dp[i][0] = 0;
+}
+
+for(int j=0; j<=m; j++) {
+    dp[0][j] = 0;
+}
+
 for(int i=1; i<=n; i++) {
     for(int j=1; j<=m; j++) {
         if(s[i-1] == t[j-1]) {

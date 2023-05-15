@@ -1,37 +1,61 @@
 #include <bits/stdc++.h>
 using namespace std;
+int n;
+int x;
 
-vector<int>nums;
-
-int robber(int l, int r, vector<int> &a)
+int BFS(int src)
 {
-    int inc = 0, exc = 0, temp;
-    for (int i = l; i <= r; i++)
+    queue<long long> q;
+    q.push(src);
+    map<long long, int> m;
+    m.insert({src, 0});
+    int cnt = 0;
+    while (!q.empty())
     {
-        temp = max(inc, exc);
-        inc = exc + a[i];
-        exc = temp;
+        long long head = q.front();
+        q.pop();
+        string s = to_string(head);
+
+        if (s.size() == n)
+            return m[head];
+
+        for (auto digit : s)
+        {
+            int x = digit - '0';
+
+            if (x == '0')
+                continue;
+
+            long long newNumber = x * head;
+            int f = 0;
+
+            map<long long, int>::iterator it = m.begin();
+            for (; it != m.end(); ++it)
+            {
+                if (it->first == newNumber)
+                {
+                    f = 1;
+                    break;
+                }
+            }
+
+            if (f == 0)
+            {
+                q.push(newNumber);
+                m.insert({newNumber, cnt + 1});
+                cnt = cnt + 1;
+            }
+            else
+                f = 0;
+        }
     }
-    return max(inc, exc);
+
+    return -1;
 }
-int rob(vector<int> &a)
-{
-    int n = a.size();
-    if (n == 0)
-        return 0;
-    if (n == 1)
-        return a[0];
-    return max(robLinear(0, n-1, a), robLinear(1, n - 1, a));
-}
+
 int main()
 {
-    int n;
-    cin >> n;
-    nums.resize(n+1);
-
-    for(int i=1; i<=n; i++) {
-        cin
-    }
-
-    cout << rob(n) << '\n';
+    cin >> n >> x;
+    cout << BFS(x);
+    return 0;
 }
