@@ -61,7 +61,8 @@ int main()
     {
         for (int j = 1; j <= n; j++)
         {
-            if (i - j == q1 - q2 || i + j == q1 + q2)
+            if (i - j == q1 - q2 || i + j == q1 + q2) // here is the magic. that's how we can find
+                // the diagonal paths
                 grid[i][j] = -1;
 
             if (i == q1)
