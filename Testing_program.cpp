@@ -1,49 +1,90 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+vector<vector<int>> roads;
+int K;
+vector<int> visited1;
+vector<int> visited2;
+vector<int> children;
+vector<int> children2;
+
+bool RomJul(int source, int source2)
+{
+    visited1[source] = 1;
+    visited2[source2] = 1;
+
+    children.push_back(source);
+    children2.push_back(source2);
+
+    int z = 1;
+
+    while (true)
+    {
+        if (z > K)
+            break;
+
+        int sz = children.size();
+
+        for (int i = sz - 1; i >= 0; i--)
+        {
+            for (int child : roads[children[i]])
+            {
+                if (visited1[child] != 1)
+                {
+                    visited1[child] = 1;
+                    children.push_back(child);
+                }
+            }
+            children.erase(children.begin() + i);
+        }
+
+        int sz2 = children2.size();
+
+        for (int i = sz2 - 1; i >= 0; i--)
+        {
+            for (int child : roads[children2[i]])
+            {
+                if (visited2[child] != 1)
+                {
+                    visited2[child] = 1;
+                    if (visited1[child] == visited2[child])
+                        return true;
+                    children2.push_back(child);
+                }
+            }
+            children2.erase(children2.begin() + i);
+        }
+        z++;
+    }
+    return false;
+}
+
 int main()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    int n;
-    scanf("%d", &n);
-    long long x;
-    scanf("%lli", &x);
+    int N, E, X, Y;
+    cin >> N >> E;
 
-    queue<long long> q;
-    map<long long, int> ops;
+    visited1.resize(N + 1);
+    visited2.resize(N + 1);
+    roads.resize(N + 1);
 
-    ops[x] = 0;
-    q.push(x);
-
-    while (!q.empty())
+    for (int i = 0; i < E; i++)
     {
-        long long child = q.front();
-        q.pop();
-        string digits = to_string(child);
-
-        if (digits.size() == n)
-        {
-            printf("%d", ops[child]);
-            return 0;
-        }
-
-        for (auto digit : digits)
-        {
-            if (digit == '0')
-                continue;
-
-            long long ydecimal = child * (digit - '0');
-
-            if (!ops.count(ydecimal))
-            {
-                ops[ydecimal] = ops[child] + 1;
-                q.push(ydecimal);
-            }
-        }
+        int X, Y;
+        cin >> X >> Y;
+        roads[X].push_back(Y);
+        roads[Y].push_back(X);
     }
 
-    printf("-1");
+    cin >> X >> Y >> K;
+
+    if (RomJul(X, Y))
+        cout << "YES";
+    else
+        cout << "NO";
 
     return 0;
 }
