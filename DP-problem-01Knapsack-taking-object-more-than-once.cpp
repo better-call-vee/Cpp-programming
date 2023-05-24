@@ -1,6 +1,9 @@
 /*
 It's like the knapsack problem but we can take one item more than once which is actually called the
-unbounded knapsack. It's quite likely the main knapsack problem
+unbounded knapsack. It's quite likely the main knapsack problem. But here is a thing that we get the
+concept from a problem named dice combinations.
+we take an object as many times we can until it's not going out of the capacity.
+and we will take the max of all cases.
 */
 
 #include <bits/stdc++.h>
@@ -27,8 +30,8 @@ long long knapsack(int n, int cap)
         return dp[n][cap];
 
     long long ans1 = 0;
-    for (int i = 1; cap >= i * wt[n]; i++)
-        ans1 = max(ans1, val[n] * i + knapsack(n-1, cap - i * wt[n]));
+    for (int i = 1; cap >= i * wt[n]; i++) // here are the main differences
+        ans1 = max(ans1, val[n] * i + knapsack(n - 1, cap - i * wt[n]));
 
     long long ans2 = knapsack(n - 1, cap);
 
@@ -57,4 +60,3 @@ int main()
 
     return 0;
 }
-
