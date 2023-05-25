@@ -96,7 +96,7 @@ Sample Input 0
 3
 RBG
 4
-RGBB
+RGBB 
 Sample Output 0
 
 PG
