@@ -1,90 +1,69 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<vector<int>> roads;
-int K;
+vector<vector<int>> city;
 vector<int> visited1;
 vector<int> visited2;
-vector<int> children;
+int K;
+vector<int> children1;
 vector<int> children2;
 
-bool RomJul(int source, int source2)
+bool RomJul(int source1, int source2)
 {
-    visited1[source] = 1;
-    visited2[source2] = 1;
+    visited[source1] = 1;
+    vistied[source2] = 1;
 
-    children.push_back(source);
+    children1.push_back(source1);
     children2.push_back(source2);
 
-    int z = 1;
-
+    int a = 1;
     while (true)
     {
-        if (z > K)
+        if (a > K)
             break;
 
-        int sz = children.size();
+        int head = children1[0];
+        int sz = children1.size();
 
         for (int i = sz - 1; i >= 0; i--)
         {
-            for (int child : roads[children[i]])
+            for (int nodes : children1[i])
             {
-                if (visited1[child] != 1)
-                {
-                    visited1[child] = 1;
-                    children.push_back(child);
-                }
+                visited1[nodes] = 1;
+                children.push_back(nodes);
             }
-            children.erase(children.begin() + i);
+            children1.erase(children1.begin() + i);
         }
 
         int sz2 = children2.size();
-
-        for (int i = sz2 - 1; i >= 0; i--)
-        {
-            for (int child : roads[children2[i]])
-            {
-                if (visited2[child] != 1)
-                {
-                    visited2[child] = 1;
-                    if (visited1[child] == visited2[child])
-                        return true;
-                    children2.push_back(child);
-                }
+        for(int i=sz2-1; i>=0; i--) {
+            for(int nodes: children2[i]) {
+                visited2[nodes] = 1;
+                if(visited1[nodes] == 1 && visited2[nodes] == 1) return true;
+                children2.push_back(nodes);
             }
             children2.erase(children2.begin() + i);
         }
-        z++;
+        a++;
     }
-    return false;
 }
 
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
 
-    int N, E, X, Y;
+    int N, E;
     cin >> N >> E;
 
-    visited1.resize(N + 1);
-    visited2.resize(N + 1);
-    roads.resize(N + 1);
+    city.resize(N + 1);
 
-    for (int i = 0; i < E; i++)
-    {
-        int X, Y;
-        cin >> X >> Y;
-        roads[X].push_back(Y);
-        roads[Y].push_back(X);
+    for(int i=0; i<E; i++) {
+        int u, v;
+        cin >> u >> v;
+        city[u].push_back(v);
+        city[v].push_back(u);
     }
 
-    cin >> X >> Y >> K;
-
-    if (RomJul(X, Y))
-        cout << "YES";
-    else
-        cout << "NO";
-
-    return 0;
+    int source1, source2;
+    cin >> source1 >> source2;
+    
 }
