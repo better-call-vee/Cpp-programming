@@ -35,26 +35,28 @@ int main()
    int n, k;
    cin >> n >> k;
    vector<int> v(n); // taking the n sized array.
+
    for (int i = 0; i < n; i++)
-   {
       cin >> v[i];
-   }
 
    int l = 0, r = 0, sum = 0, ans = -1;
 
-   while (r < n)  //array's indexing is one less than the given n input.
+   while (r < n) // array's indexing is one less than the given n input.
    {
-      sum += v[r]; //like I described above.
+      sum += v[r]; // like I described above. and everytime we are adding the right element. Then
+      // we are moving until we get the subarray equivalent to the 'k'
 
       if (r - l + 1 < k)
-      {
          r++; // we are moving forward/sliding until the length of the
-         // subarray is equivalent to k.
-      }
+      // subarray is equivalent to k.
+
       else if (r - l + 1 == k)
       {
-         ans = max(ans, sum);
-         sum -= v[l]; //like I described above.
+         ans = max(ans, sum); // have to do it beforehand the substraction.
+         // 100, 200, 300, 400 . k = 2
+         // after reaching this else if condition for the first time we will get a sum of 300.
+         // if we just substruct first entering the else if part, it will be wrong.
+         sum -= v[l]; // like I described above.
          r++;
          l++;
       }

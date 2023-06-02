@@ -7,8 +7,7 @@ it's a maxheap(priority queue). I want to make it a minheap. while pushing I wil
 popped, then -20, then -30. Everytime we will multiply -1 with the popped element.
 We will eventually get 10, then 20, then 30. Gotcha(minheap)
 
-there is a syntax to do this.
-priority_queue<int
+there is a syntax to do this. search it up
 */
 
 #include <bits/stdc++.h>
@@ -29,7 +28,7 @@ int main()
         pq.pop();
     }
     cout<<"\n";
-    priority_queue<int, vector<int>, greater<int>> pq2;
+    priority_queue<int, vector<int>, greater<int>> pq2; //the minheap syntax
     pq2.push(10);
     pq2.push(5);
     pq2.push(3);
