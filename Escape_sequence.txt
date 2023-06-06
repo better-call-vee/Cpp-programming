@@ -1,0 +1,23 @@
+An escape sequence is a combination of characters that represents a special or non-printable character
+in a string or character literal. It is used to include characters that are not easily representable
+or to represent certain actions or formatting.
+
+In most programming languages, including C++, the escape sequence begins with a backslash (\) followed
+by one or more characters. When the compiler encounters an escape sequence, it interprets it as a
+special character or performs a specific action.
+
+Here are some common escape sequences used in C++:
+
+\\: Represents a backslash character.
+\": Represents a double quotation mark character.
+\': Represents a single quotation mark character.
+\n: Represents a newline character.
+\t: Represents a tab character.
+\r: Represents a carriage return character.
+\b: Represents a backspace character.
+\f: Represents a form feed character.
+\a: Represents an alert (bell) character.
+\v: Represents a vertical tab character.
+\0: Represents the null character.
+For example, if you want to include a double quotation mark within a string literal, you would use
+the escape sequence \" to represent it.
