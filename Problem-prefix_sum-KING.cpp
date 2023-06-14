@@ -62,9 +62,9 @@ int findKingIndex(const vector<int> &nums)
     vector<int> prefixSum(n, 0); // set to 0 initially
 
     prefixSum[0] = nums[0];
-    for (int i = 1; i < n; i++
-        prefixSum[i] = prefixSum[i - 1] + nums[i]; //everytime a new element of the nums is being 
-        //taken and being added to the prefix sum.
+    for (int i = 1; i < n; i++)
+        prefixSum[i] = prefixSum[i - 1] + nums[i]; // everytime a new element of the nums is being
+    // taken and being added to the prefix sum.
 
     for (int i = 0; i < n; i++)
     {
@@ -73,9 +73,7 @@ int findKingIndex(const vector<int> &nums)
         // sum from a particular index and check if they are equal or not.
 
         if (leftSum == rightSum)
-        {
             return i;
-        }
     }
 
     return -1;
