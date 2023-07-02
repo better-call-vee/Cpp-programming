@@ -33,24 +33,27 @@ int main()
 
     int l = 0, r = 0, sum = 0, ans = 0;
 
-    while (r < n)
+    while (r < N)
     {
         sum += arr[r];
 
-        if (sum <= k)
+        if (sum > K)
         {
-            ans = max(ans, r - l + 1);
-            r++;
-        }
-        else if (sum > k)
-        {
-            if (l <= r)
+            while (sum > K)  
             {
                 sum -= arr[l];
                 l++;
             }
         }
+
+        if (sum == K) // if we find the sum == target sum, we take the max length.
+            ans = max(ans, r - l + 1);
+
+        r++; // we will simply move the right pointer everytime...
     }
+
+    // if the sum is being greater than the target sum, we need to move the left pointer. and after
+    // moving we will substract the arr[l]
 
     cout << ans;
 
