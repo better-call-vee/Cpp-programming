@@ -1,43 +1,50 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
-#define fast                          \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(nullptr);                 \
-    cout.tie(nullptr);
-
-vector<int> marked(100001, 0);
-
-int main()
+bool canMakePalindrome(string s)
 {
-    fast;
+    int start = 0;
+    int end = s.length() - 1;
 
-    int n;
-    cin >> n;
-
-    vector<int> multis;
-
-    int maxo = INT_MIN;
-    for (int i = 0; i < n; i++)
+    while (start <= end)
     {
-        int inp;
-        cin >> inp;
-        multis.push_back(inp);
-        maxo = max(inp, maxo);
-    }
-
-    for (int i = n - 1; i >= 0; i--)
-    {
-        if (maxo % multis[i] == 0 && marked[multis[i]] != 1)
+        if (s[start] == s[end])
         {
-            marked[multis[i]] = 1;
-            multis.erase(multis.begin() + i);
+            start++;
+            end--;
+        }
+        else
+        {
+            // Check if deleting a character results in a palindrome
+            if (s[start] == s[end - 1])
+                end -= 2;
+            else if (s[start + 1] == s[end])
+                start += 2;
+            else if (s[start + 1] == s[end - 1])
+                start += 2;
+            else
+                return false;
         }
     }
 
-    sort(multis.begin(), multis.end());
+    return true;
+}
 
-    cout << maxo << " " << multis[multis.size() - 1];
+int main()
+{
+    int t;
+    cin >> t;
+
+    while (t--)
+    {
+        string s;
+        cin >> s;
+
+        if (canMakePalindrome(s))
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
+    }
 
     return 0;
 }
