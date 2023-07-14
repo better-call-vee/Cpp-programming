@@ -1,50 +1,33 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-bool canMakePalindrome(string s)
-{
-    int start = 0;
-    int end = s.length() - 1;
-
-    while (start <= end)
-    {
-        if (s[start] == s[end])
-        {
-            start++;
-            end--;
-        }
-        else
-        {
-            // Check if deleting a character results in a palindrome
-            if (s[start] == s[end - 1])
-                end -= 2;
-            else if (s[start + 1] == s[end])
-                start += 2;
-            else if (s[start + 1] == s[end - 1])
-                start += 2;
-            else
-                return false;
-        }
-    }
-
-    return true;
-}
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(nullptr);                 \
+    cout.tie(nullptr);
 
 int main()
 {
-    int t;
-    cin >> t;
+    fast;
 
-    while (t--)
-    {
-        string s;
-        cin >> s;
+    int n;
+    cin >> n;
 
-        if (canMakePalindrome(s))
-            cout << "YES" << endl;
-        else
-            cout << "NO" << endl;
-    }
+    vector<int> instability(n);
+
+    for (int i = 0; i < n; i++)
+        cin >> instability[i];
+
+    sort(instability.begin(), instability.end());
+
+    int comp1 = instability[n - 2] - instability[0];
+    int comp2 = instability[n - 1] - instability[1];
+
+    if (n > 2)
+        cout << min(comp1, comp2);
+
+    else
+        cout << 0;
 
     return 0;
 }
