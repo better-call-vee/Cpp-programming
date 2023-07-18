@@ -1,40 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define N 200010
-
-//https://codeforces.com/contest/1838/problem/B
-/*
- by ensuring that the largest element n is placed between elements 1 and 2, the code covers
- all possible scenarios and guarantees that the number of permutation subarrays is minimized. 
-*/
-int idx[N];
 
 int main()
 {
+    int T;
+    cin >> T;
 
-    int t;
-    cin >> t;
-    while (t--)
+    while (T--)
     {
-
         int n;
         cin >> n;
 
-        for (int i = 1; i <= n; ++i)
+        vector<int> game(n, 0);
+
+        for (int i = 0; i < n; i++)
+            cin >> game[i];
+
+        int dif = abs(game[0] - game[1]);
+        for (int i = 1; i < n - 1; i++)
         {
-            int x;
-            cin >> x;
-            idx[x] = i;
+            int score = max(abs(game[i] - game[i - 1]), abs(game[i + 1] - game[i]));
+            dif = min(dif, score);
         }
-
-        if (idx[n] < min(idx[1], idx[2]))
-            cout << idx[n] << ' ' << min(idx[1], idx[2]) << '\n';
-
-        else if (idx[n] > max(idx[1], idx[2]))
-            cout << idx[n] << ' ' << max(idx[1], idx[2]) << '\n';
-
-        else
-            cout << idx[1] << ' ' << idx[2] << '\n';
+        dif = min(dif, abs(game[n - 1] - game[n - 2]));
+        cout << dif << "\n";
     }
+
     return 0;
 }
