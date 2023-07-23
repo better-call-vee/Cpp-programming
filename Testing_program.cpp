@@ -1,29 +1,68 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+typedef long long ll;
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(nullptr);                 \
+    cout.tie(nullptr);
+
 int main()
 {
-    int T;
-    cin >> T;
+    fast;
 
-    while (T--)
+    int t;
+    cin >> t;
+
+    while (t--)
     {
-        int n;
-        cin >> n;
+        int n, k;
+        cin >> n >> k;
 
-        vector<int> game(n, 0);
+        vector<int> prb(n);
 
         for (int i = 0; i < n; i++)
-            cin >> game[i];
+            cin >> prb[i];
 
-        int dif = abs(game[0] - game[1]);
-        for (int i = 1; i < n - 1; i++)
+        vector<int> prBB(n);
+        prBB = prb;
+
+        sort(prb.begin(), prb.end());
+        sort(prBB.begin(), prBB.end(), greater<int>());
+
+        int i = 0, j = 1, err = 0;
+        while (j < n)
         {
-            int score = max(abs(game[i] - game[i - 1]), abs(game[i + 1] - game[i]));
-            dif = min(dif, score);
+            if (prb[j] - prb[i] <= k)
+            {
+                i++;
+                j++;
+            }
+            else
+            {
+                j++;
+                err++;
+            }
         }
-        dif = min(dif, abs(game[n - 1] - game[n - 2]));
-        cout << dif << "\n";
+
+        i = 0;
+        j = 1;
+        int err2 = 0;
+        while (j < n)
+        {
+            if (prBB[i] - prBB[j] <= k)
+            {
+                i++;
+                j++;
+            }
+            else
+            {
+                j++;
+                err2++;
+            }
+        }
+
+        cout << min(err, err2) << "\n";
     }
 
     return 0;
