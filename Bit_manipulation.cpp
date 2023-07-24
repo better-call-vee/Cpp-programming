@@ -1,6 +1,6 @@
 /*
 Bit related problems: https://github.com/tanvee009/XPSC_ARCHIEVE/tree/main/WEEK%207/Day_1
-//
+https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%207/Day_3/Bitwise_equation.cpp
 Bitwise operator:
 
 1)OR(1 is called the set bit)
