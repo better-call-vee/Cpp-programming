@@ -1,7 +1,9 @@
 /*
 Bit related problems: https://github.com/tanvee009/XPSC_ARCHIEVE/tree/main/WEEK%207/Day_1
 https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%207/Day_3/Bitwise_equation.cpp
-Bitwise operator:
+https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%208/Day_1/Order_by_XOR.cpp
+
+Bitwise operator: | ~ &
 
 1)OR(1 is called the set bit)
    if there is at least a 1, the answer is 1.

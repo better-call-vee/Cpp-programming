@@ -1,69 +1,62 @@
+
 #include <bits/stdc++.h>
 using namespace std;
-
-typedef long long ll;
-#define fast                          \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(nullptr);                 \
-    cout.tie(nullptr);
-
 int main()
 {
-    fast;
-
     int t;
     cin >> t;
-
     while (t--)
     {
-        int n, k;
-        cin >> n >> k;
+        int n;
+        cin >> n;
+        string s;
+        cin >> s;
 
-        vector<int> prb(n);
-
+        int cnt = 0;
         for (int i = 0; i < n; i++)
-            cin >> prb[i];
-
-        vector<int> prBB(n);
-        prBB = prb;
-
-        sort(prb.begin(), prb.end());
-        sort(prBB.begin(), prBB.end(), greater<int>());
-
-        int i = 0, j = 1, err = 0;
-        while (j < n)
         {
-            if (prb[j] - prb[i] <= k)
+            if (s[i] != s[i + 1] && i < n - 1)
             {
-                i++;
-                j++;
+                if (cnt >= 2 && cnt % 2 == 0)
+                {
+                    cout << s[i];
+                    cnt = 0;
+                }
+                else if (cnt % 2 != 0)
+                {
+                    cout << s[i] << s[i - 1];
+                    cnt = 0;
+                }
+                else
+                {
+                    cout << s[i];
+                }
             }
+            else if (s[i] == s[i + 1] && i < n - 1)
+            {
+                cnt++;
+            }
+
             else
             {
-                j++;
-                err++;
+                if (s[i] != s[i - 1])
+                    cout << s[i];
+
+                else
+                {
+                    if (cnt >= 2 && cnt % 2 == 0)
+                    {
+                        cout << s[i];
+                        cnt = 0;
+                    }
+                    else if (cnt % 2 != 0)
+                    {
+                        cout << s[i] << s[i - 1];
+                    }
+                }
             }
         }
-
-        i = 0;
-        j = 1;
-        int err2 = 0;
-        while (j < n)
-        {
-            if (prBB[i] - prBB[j] <= k)
-            {
-                i++;
-                j++;
-            }
-            else
-            {
-                j++;
-                err2++;
-            }
-        }
-
-        cout << min(err, err2) << "\n";
+        cout << endl;
     }
-
     return 0;
 }
