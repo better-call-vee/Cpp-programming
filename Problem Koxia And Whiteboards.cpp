@@ -32,7 +32,6 @@ int main ()
         cin>>n>>m;
         long long sum = 0;
         deque<int>Klwb;
-        vector<int>Kxrep;
 
         for(int i=0; i<n; i++)
         {
