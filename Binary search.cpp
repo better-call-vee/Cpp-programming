@@ -1,3 +1,5 @@
+//some binary search related problems:
+//https://github.com/tanvee009/XPSC_ARCHIEVE/tree/main/WEEK%2010/Day_1
 
 // left and right end point
 /*
