@@ -1,20 +1,17 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-typedef long long ll;
-#define fast                          \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(nullptr);                 \
-    cout.tie(nullptr);
+#include <stdio.h>
 
 int main()
 {
-    fast;
+    char emp[100];
+    scanf("%s", emp);
 
-    string ans;
-    cin >> ans;
+    double salary, sale;
+    scanf("%lf %lf", &salary, &sale);
 
-    sort(ans.begin(), ans.end()); cout<<ans;
+    double bonus = (sale * 15) / 100;
+    salary += bonus;
+
+    printf("TOTAL = R$ %.2f\n", salary);
 
     return 0;
 }

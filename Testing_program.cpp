@@ -1,40 +1,49 @@
-/*
-   +----------------------+
-  /                        \
- /    *   TANVEE009   *     \
- \  **  I CAN, I WILL  **   /
-  \  +-----------------+   /
-   +----------------------+
-*/
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
 using namespace std;
 
-typedef long long ll;
-#define fast                          \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(nullptr);                 \
-    cout.tie(nullptr);
-#define line cout << '\n';
-const string nln = "\n";
+// Function to handle each test case
+void run_case()
+{
+    int N;
+    cin >> N;
+    int best = 0; // To keep track of the best cost
+
+    // Iterate through all possible values of r
+    for (int r = 1; r <= N; r++)
+    {
+        int sum = 0, maximum = 0; // Initialize sum and maximum for this permutation
+
+        // Iterate through all elements from 1 to N
+        for (int i = 1; i <= N; i++)
+        {
+            // Calculate the value based on the condition, influenced by r
+            int value = i * (N - i < r ? N - r + 1 + N - i : i);
+
+            sum += value;                  // Add the value to the sum
+            maximum = max(maximum, value); // Update the maximum value
+        }
+
+        // Update the best cost by considering the sum minus the maximum value
+        best = max(best, sum - maximum);
+    }
+
+    cout << best << '\n'; // Print the result
+}
 
 int main()
 {
-    fast;
-    int n, k;
-    cin >> n >> k;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr); // Optimize input and output
 
-    int score, kth_score = 0, count = 0;
-    for (int i = 1; i <= n; i++)
+    int tests;
+    cin >> tests; // Read the number of test cases
+
+    // Run each test case
+    while (tests-- > 0)
     {
-        cin >> score;
-
-        if (i <= k)
-            kth_score = score;
-
-        if (score >= kth_score && score > 0)
-            count++;
+        run_case();
     }
-    cout << count << nln;
-    
+
     return 0;
 }
