@@ -73,7 +73,7 @@ reversal.
 point to start folding the line back on itself. As you increase r, you fold more and more of the line,
 reversing different segments.
 r=1: No reversal, sequence stays the same.
-r=2: Reverse last number, sequence becomes 1,2,3,4,5,6 → 1,2,3,4,5,6.
+r=2: Reverse last number, sequence becomes 1,2,3,4,5,6 → 1,2,3,4,6,5.
 r=3: Reverse last 3 numbers, sequence becomes 1,2,3,4,5,6 → 1,2,3,6,5,4.
 Let's take r=3 and see how the permutation is formed:
 For i=1,2,3, the values are 1,2,3 (since N − i ≥ r).

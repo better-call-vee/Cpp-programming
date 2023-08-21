@@ -32,7 +32,7 @@ fun(n, x) = fun(n-1, target) || fun(n-1, x - num[n]) #skip or take
 if one's true, then we get YES
 Time complexity O(2^n)(brute force)
 */
-/*
+
 #include <bits/stdc++.h>
 using namespace std;
 

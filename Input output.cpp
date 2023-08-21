@@ -58,3 +58,26 @@ int main() {
 }
 
 */
+
+/*
+Don't use pow() unless you are bound to use this because sometimes the answer won't be exactly what
+ you are expecting, and there will be slight precision errors. For example, it's clear that
+ log2(1 << 30) is 30
+. But sometimes it may consider it as 29.9999999999999
+ and when converting it to int, it will return 29.
+
+Similar to this, as pow() takes double as arguments, pow(5, 2) should return 52=25.00
+, but sometimes it may consider it as 24.9999999999999
+ and when converting it to int, it will return 24
+. You may use round(pow(5, 2)) in this particular case to avoid the precision issue or just brute force.
+*/
+
+/*
+While comparing two floating point numbers, instead of if (a == b), use if (abs(a - b) < eps) where
+ eps = 1e-9 or something similar to avoid precision issues
+*/
+
+/*
+For ceiling, use (a + b - 1) / b
+instead of ceil(a/b)
+*/
