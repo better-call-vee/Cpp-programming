@@ -1,5 +1,5 @@
 // https://codeforces.com/problemset/problem/1846/C
-
+// https://github.com/tanvee009/XPSC_ARCHIEVE/tree/main/WEEK%2011/Day_5
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -77,7 +77,7 @@ int main()
         int rank;
         for (int i = 0; i < n; i++)
         {
-            if (vp[i].first == 0) //we have to output just Rudolf's rank.
+            if (vp[i].first == 0) // we have to output just Rudolf's rank.
             {
                 rank = i + 1;
                 break;
