@@ -70,4 +70,25 @@ True: If the sequence has a next permutation, the function modifies the sequence
 true.
 False: If the sequence is already in its lexicographically greatest permutation (sorted in descending
  order), the function resets it to the smallest permutation (ascending order) and returns false
+
+ #include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    vector<int> sequence = {1, 2, 3, 4};
+
+    // Sort the sequence if not already sorted.
+    sort(sequence.begin(), sequence.end());
+
+    do {
+        // Print current permutation
+        for(int num : sequence) {
+            cout << num << " ";
+        }
+        cout << "\n";
+
+    } while(next_permutation(sequence.begin(), sequence.end()));
+
+    return 0;
+}
 */

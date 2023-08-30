@@ -5,7 +5,7 @@ https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%208/Day_1/Order_by_XOR
 https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%2011/Day_2/Array_elimination.cpp
 https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%2011/Day_3/Stone_Pile.cpp
 https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%2012/Day_4/DivisorChain.cpp
-
+https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%2012/Day_5/Valerii_against_Everyone.cpp
 
 
 Bitwise operator: | ~ &
