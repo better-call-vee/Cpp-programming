@@ -1,5 +1,9 @@
-//some binary search related problems:
-//https://github.com/tanvee009/XPSC_ARCHIEVE/tree/main/WEEK%2010/Day_1
+/*some binary search related problems:
+https://github.com/tanvee009/XPSC_ARCHIEVE/tree/main/WEEK%2010/Day_1
+https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%2014/Day_7/Very_Easy_task.cpp
+*/
+
+//A complete codeforces course: https://codeforces.com/edu/course/2/lesson/6
 
 // left and right end point
 /*

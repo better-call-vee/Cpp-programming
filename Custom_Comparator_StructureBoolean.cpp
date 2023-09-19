@@ -11,6 +11,7 @@ typedef long long ll;
 
 struct CmpPairs
 {
+    //this has to be named operator always, it's called functor
     bool operator()(const pair<int, int> &a, const pair<int, int> &b)
     {
         if (a.first == b.first)

@@ -6,6 +6,8 @@ https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%2011/Day_2/Array_elimi
 https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%2011/Day_3/Stone_Pile.cpp
 https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%2012/Day_4/DivisorChain.cpp
 https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%2012/Day_5/Valerii_against_Everyone.cpp
+https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%2015/Day_2/Candy_party.cpp
+https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%2015/Day_5/Friendly_arrays.cpp
 
 
 Bitwise operator: | ~ &
