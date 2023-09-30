@@ -120,7 +120,37 @@ int main () {
 }
 
 */
+-------------
+SET k-th bit|
+============-
+int x = 4, k = 1;
+x | (1 << k);
 
+---------------
+UNSET k-th bit|
+==============-
+x & (~(1 << k))
+ Shift 1 by k positions to the left: (1<<k)
+This will create a number that has all bits set to 0 except the kth bit, which will be set to 1.
+For example, if k=3, then (1<<k) will result in the binary representation 1000.
+
+Take the bitwise NOT of the above result: ∼(1<<k)
+This will flip all the bits of the result from step 1. That means all bits will be set
+ to 1 except the kthkth bit, which will be set to 0. For the example above, the result will be 0111.
+
+Take the bitwise AND of x with the result from step 2: x&∼(1<<k)
+        This will keep all the bits of xx unchanged except for the kthkth bit. 
+        Since the kth bit in our mask (from step 2) is 0, the resulting kth
+         bit in the final result will also be 0 (because anything ANDed with 0 is 0).
+
+Let's look at a quick example for better understanding:
+
+Suppose x=13 (binary representation 1101) and you want to unset the 2nd bit
+(0-based indexing). Here's how the operation works:
+
+    1<<2 = 0100
+    ∼(1<<2) = 1011
+    x&∼(1<<2)= 1101 (which is x) AND 1011 = 1001 (which is 9 in decimal).
 /*
 //Change number of bits to convert a to b
 =========================================
@@ -322,3 +352,103 @@ For integer values that are powers of 2, log2(x) gives the position of the most 
 power of 2 less than x. While the logarithm result for numbers that aren't exact powers of 2 isn't
 an integer, in the context of binary numbers and bit positions, the floating-point result of
 log2 gets truncated to an integer, providing the MSSB position.
+
+log2(32) => log 2 based 32 will be 5. it means 2^5 is 32.
+
+
+
++---------------------------------+
+|          Flip a Bit             |
++---------------------------------+
+We can Flip a bit by XORing it with 1.
+0 ^ 1 = 1   and   1 ^ 1 = 0.
+
+
+
++---------------------------------+
+|             BIT SET             |
++---------------------------------+
+
+A bitset is a container that stores individual bits as boolean values (either 0 or 1). 
+It's a very useful tool when you need to handle binary data or manipulate bits directly.
+Key Points for bitset:
+
+    Fixed Size: A bitset is of fixed size, determined at compile time.
+    Direct Access: You can access and modify individual bits using an array-like syntax.
+    Bit Operations: You can perform bitwise operations directly on bitset objects.
+    String Representation: You can convert a bitset to a string of 0s and 1s.
+
+Conversion to unsigned long (ulong)
+The bitset class provides a method called to_ulong() that converts the binary
+representation stored in the bitset into an unsigned long integer. This is
+particularly useful when you need the integer representation of a binary sequence.
+Key Points for to_ulong():
+
+    Order Matters: The leftmost bit in the bitset is the most significant bit 
+    when converting to an unsigned long.
+    Throws Exception: If the binary number represented by the bitset cannot fit 
+    into an unsigned long, the method throws an overflow_error exception.
+    Useful for Results: After performing bit manipulations using bitset, you can 
+    easily convert the result back to a numerical value using to_ulong().
+
+An intuitive code:
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int T;
+    cin >> T;
+    while(T--) {
+        int N;
+        cin >> N;
+        bitset<32> inv(N);
+
+        string helper = inv.to_string();
+        reverse(helper.begin(), helper.end());
+
+        bitset<32> rev(helper);
+        cout << rev.to_ulong();
+        cout << "\n";
+    }
+    return 0;
+}
+it will print a number with reverse bits.
+
+@ Traversing a bitset @
+ int n, k;
+ cin >> n >> k;
+ bitset<32> binary(n);
+ for(int K = 0; K < k; K++) binary[K] = 0;
+ cout << binary.to_ulong();
+
+
++---------------------------------+
+|        NOT AND FLIP BITS        |
++---------------------------------+
+        unsigned int n;
+        cin >> n;
+        n = ~n; // it will change all the 0 bits to 1, and all the 1 bits to 0
+        cout << n << "\n";
+
+int main() {
+  int n; cin >> n;
+  while (n--) {
+    unsigned int x; cin >> x;
+    unsigned int ans = 0;
+    for (int k = 0; k < 32; k++) {
+      if ((x >> k) & 1) { // bit is 1
+        // flip to 0
+      }
+      else { // bit is 0
+        // flip to 1
+        ans += 1 << k; //it works like ans |= 1 << k;
+      }
+    }
+    cout << ans << '\n';
+  }
+  return 0;
+}

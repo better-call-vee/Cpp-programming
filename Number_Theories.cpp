@@ -2,14 +2,14 @@
 --------------------
 | Common Multiples:|
 --------------------
-Given two integers xx and yy, and a range from 11 to nn:
+Given two integers x and y, and a range from 1 to n:
 
-    Calculating Multiples of xx and yy:
-        The total number of multiples of xx within the range is ⌊nx⌋⌊xn​⌋.
-        The total number of multiples of yy within the range is ⌊ny⌋⌊yn​⌋.
+    Calculating Multiples of x and y:
+        The total number of multiples of x within the range is ⌊nx⌋⌊xn​⌋.
+        The total number of multiples of y within the range is ⌊ny⌋⌊yn​⌋.
 
-    Identifying Common Multiples of xx and yy:
-        The common multiples of xx and yy within a given range are the multiples of their Least Common Multiple (LCM).
+    Identifying Common Multiples of x and y:
+        The common multiples of x and y within a given range are the multiples of their Least Common Multiple (LCM).
         The formula for LCM of two numbers aa and bb is:
         LCM(a,b)=a×b/GCD(a,b)
 
@@ -61,23 +61,26 @@ Calculating the Sum of the Last m Largest Numbers in a Sequence:|
 
 Given a sequence from 1 to N:
 
-To find the sum of the last m largest numbers:
+To find the sum of the last m largest numbers, we first need to identify these numbers.
 
-    Arithmetic Sequence Sum Formula:
-    The formula to find the sum of an arithmetic sequence is:
-    Sum=n/2 × (first term+last term)
+The last m largest numbers in the sequence from 1 to N would be:
+N−1,N−2,…,N−m+1
 
-    Identifying Terms:
-    For the last m largest numbers in the sequence from 1 to N:
+Now, let's use the arithmetic sequence sum formula to determine the sum of these numbers.
 
-    The first term is N−m+1.
-    The last term is N.
+The formula to find the sum of an arithmetic sequence is:
+Sum=n/2×(first term+last term)
 
-    Sum Calculation:
-    Using the above information in the formula:
-    Sum=n/2 × (2N−m+1)
+For our sequence:
 
-This formula provides the sum of the last nn largest numbers in the sequence from 11 to NN.
+    First term = N−m+1
+    Last term = N
+    Number of terms (n) = m
+
+Plugging in these values:
+Sum=m / 2 × (N − m + 1 + N)
+Sum=m / 2 × (2N − m + 1)
+highSum = (k * (2 * n - k + 1)) / 2;
 */
 
 /*
@@ -99,4 +102,12 @@ cout << ans << " " << n - ans << "\n";
 CO - PRIME |
 ------------
 If two numbers' GCD is 1, then they are "CO-PRIME"
+*/
+
+/*
+-------------------
+GCD - OVERLAPPING |
+-------------------
+https://github.com/tanvee009/Cpp-programming/blob/main/GCD_overlapping.cpp
+
 */
