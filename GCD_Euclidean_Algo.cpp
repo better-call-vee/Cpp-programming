@@ -1,6 +1,19 @@
 #include <iostream>
 using namespace std;
 
+/*
+    The GCD of two integers a and b is the same as the GCD of b and a mod b.
+    The GCD of any integer a and 0 is a.
+
+Let's delve into the logic behind the Euclidean algorithm.
+Basic Idea:
+
+If we have two numbers, a and b, where a>b, then the GCD of a and b is the
+same as the GCD of b and the remainder when a is divided by b. The algorithm
+keeps applying this property recursively until b becomes 0. At that point, a 
+is the GCD.
+*/
+
 int gcd(int a, int b) {
     // Base case: If b is 0, the GCD is a
     if (b == 0) {

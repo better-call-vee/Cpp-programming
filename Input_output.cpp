@@ -37,16 +37,15 @@ int main()
 /*
 Set precision
 
+#include <iomanip>
 #include <iostream>
-#include <iomanip> // for setprecision
-
 using namespace std;
 
 int main() {
     double value = 3.14159265358979323846;
 
-    // Without precision
-    cout << "Without precision: " << value << endl;
+    // With maximum precision
+    cout << "With maximum precision: " << setprecision(17) << value << endl;
 
     // With precision of 3 decimal places
     cout << "With precision of 3: " << setprecision(3) << value << endl;
@@ -56,6 +55,9 @@ int main() {
 
     return 0;
 }
+With maximum precision: 3.1415926535897931
+With precision of 3: 3.14
+With precision of 5: 3.1416
 
 */
 
