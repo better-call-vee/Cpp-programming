@@ -111,3 +111,67 @@ GCD - OVERLAPPING |
 https://github.com/tanvee009/Cpp-programming/blob/main/GCD_overlapping.cpp
 
 */
+
+
+
+/*
+--------------------------
+| DIGIT COUNT TECHNIQUE: |
+--------------------------
+
+to get the digit count of any number, we can simply use
+log10(n) + 1.
+it will give us the digit count.
+
+*/
+
+
+
+
+/*
+--------------------------
+|   COMBINATORICS(NCR)   |
+--------------------------
+BINOMIAL EFFICIENT:
+*/
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int ncr(int n, int r) {
+    if(n < r) return 0; // if n becomes smaller than r, we can't fulfill r.so, 0 combination
+    if(r == 0 || r == n) return 1; //if r is equivalent to 0 or r == n then there is only 1 combination. think about it.
+    return ncr(n - 1, r - 1) + ncr(n - 1, r);
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int N, R;
+    cin >> N >> R;
+
+    cout << ncr(N, R);
+
+    return 0;
+}
+
+Let C(n, r) = number of ways to select r elements from n elements
+Then C(n, r) = C(n - 1, r) + C(n - 1, r - 1)
+Do you know the proof of this?
+Here is an easy proof:
+Let the elements be 1, 2, 3, ...., n
+We want to select r elements from this n elements. How many ways can we do this?
+
+Consider the first element 1.
+- If we do not select it, then we will have to select the r elements from
+  the rest of the n - 1 elements: 2, 3, 4, .., n.
+  How many ways for this? Yes, C(n - 1, r)
+
+- If we select 1, then then we will have to select the r - 1 elements from
+  the rest of the n - 1 elements.
+  How many ways for this? Yes, C(n - 1, r - 1)
+
+So total ways = C(n, r) = C(n - 1, r) + C(n - 1, r - 1)
+
+*/
