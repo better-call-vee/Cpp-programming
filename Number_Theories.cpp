@@ -333,3 +333,15 @@ last 2's power for all this.
 1 +     1              + 1            + 1.... and it's eventually log2(n);
 */
 
+
+
+
+
+/*
+╔════════════════════╗
+║ Modular Arithmetic ║
+╚════════════════════╝
+
+Modulo World => suppose n mod 6, in this world 5, 11, 17, 23... belong to the same family. and so on like this.
+
+*/
