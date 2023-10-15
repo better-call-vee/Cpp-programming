@@ -175,3 +175,161 @@ Consider the first element 1.
 So total ways = C(n, r) = C(n - 1, r) + C(n - 1, r - 1)
 
 */
+
+
+/*
+NPK = N! / (N-K)!
+suppose, 1,2,3 => here  {1,2} will be a combination, as well {2, 1} will be counted
+*/
+
+
+/*
+--------------------------
+|       NOTATIONS        |
+--------------------------
+i=4
+ ∏  i => 1×2×3×4=24   this is pie notation.
+i=1
+
+i=4
+ ∑  i^2 => 1+4+9+16=30    this is sigma notation.
+i=1
+*/
+
+
+/*
+-----------------------------------------
+|       Divisiblity of a big num        |
+-----------------------------------------
+
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+bool isDivisible(string a, ll b) {
+    ll mod = 0;
+    for(int i = 0; i < a.size(); i++) {
+        mod = (mod * 10 + (a[i] - '0')) % b;
+    }
+    return mod == 0;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t;
+    cin >> t;
+
+    while(t--) {
+        string a;
+        cin >> a;
+
+        ll b;
+        cin >> b;
+
+        (isDivisible(a, b))
+            ? cout << "YES, " << a << " is divisible by " << b << "\n"
+            : cout << "NO, " << a << " is not divisible by " << b << "\n";
+    }
+
+    return 0;
+}
+
+*/
+
+
+
+
+/*
+╔═══════════╗
+║ Log & Exp ║
+╚═══════════╝
+1) log(a×b)=log(a)+log(b)
+2) e^(log(a))=a     => e eliminates log
+
+#include <cmath>
+#include <iostream>
+using namespace std;
+int main() {
+    double a, b;
+    cout << "Enter the value of a: ";
+    cin >> a;
+    cout << "Enter the value of b: ";
+    cin >> b;
+
+    double log_a = log(a);
+    double log_b = log(b);
+    double sum_log = log_a + log_b;
+
+    // Property 1: log(a * b) = log(a) + log(b)
+    cout << "Property 1: log(a * b) = log(a) + log(b)" << endl;
+    cout << "log(" << a << " * " << b << ") = " << log(a * b) << endl;
+    cout << "log(" << a << ") + log(" << b << ") = " << sum_log << endl << endl;
+
+    // Property 2: e^(log(a) + log(b)) = a * b
+    cout << "Property 2: e^(log(a) + log(b)) = a * b" << endl;
+    cout << "e^(" << log_a << " + " << log_b << ") = " << exp(sum_log) << endl;
+    cout << a << " * " << b << " = " << a * b << endl;
+
+    return 0;
+}
+
+---------------------------------------------
+𝐥𝐨𝐠ₐ𝑏 = logc(b) / logc(a)  or 𝐥𝐨𝐠ₑ𝑏 / 𝐥𝐨𝐠ₑ𝑎; |
+---------------------------------------------
+
+Intuition:
+Imagine you have a ladder of height b and you're measuring it using a 
+ruler of length a. The logarithm log⁡abloga​b essentially asks: "How many rulers 
+of length a do we need to measure the ladder of height b?"
+
+But what if our ruler is of a different length, say c? The right-hand side of 
+the formula measures the ladder in two steps using the new ruler:
+
+    log⁡c(b): How many c-length rulers are needed to measure the ladder of height b?
+    log⁡c(a): How many c-length rulers to measure the original a-length ruler?
+
+Dividing these (log⁡c(b)/log⁡c(a)​) gives us the equivalent measure of the ladder height
+b but in terms of the original ruler a, essentially converting our measurement system
+back to rulers of length a.
+
+Visual:
+Place two ladders side by side, one of height b and the other of height a. Measure both 
+using rulers of length c. The ratio of these two measurements (counts of rulers) gives
+you a conversion factor to understand how many a-length rulers would be needed to
+measure the ladder of height b.
+
+*/
+
+
+
+
+
+/*
+╔═════════════════╗
+║ Harmonic Series ║
+╚═════════════════╝
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int n = 1000000;
+    long long sum = 0;
+    for(int i = 1; i <= n; i++)
+        for(int j = i; j <= n; j += i) 
+            sum += j;
+    cout << sum;
+    return 0;
+}
+
+This is a proper example of harmonic series. The time complexity is O(nlogn).
+It might seem like it's O(n^2), but it's O(nlogn).
+The sum of harmonic series is logn.
+
+1 + 1/2 + 1/3 + 1/4 + 1/5 + 1/6 + 1/7 + 1/8... 1/n;
+here => 1/7 will have the value less than 1/8 and greater than 1/4. So, we will take the
+last 2's power for all this.
+1 + 1/2 + 1/2 + 1/4 + 1/4 + 1/4 + 1/4 + 1/8... 1/log2(n)
+1 +     1              + 1            + 1.... and it's eventually log2(n);
+*/
+
