@@ -51,7 +51,10 @@ int main() {
     cout << "Adjusted count of multiples of " << y << ": " << y_div << endl;
     return 0;
 }
-
+------------
+FUN FACTS: |
+------------
+IF A NUMBER IS ONE LESS OR GREATER THAN A NUMBER, THEN THEIR GCD WILL BE 1!!!
 */
 
 /*
