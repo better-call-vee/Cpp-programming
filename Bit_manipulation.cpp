@@ -355,6 +355,7 @@ log2 gets truncated to an integer, providing the MSSB position.
 
 log2(32) => log 2 based 32 will be 5. it means 2^5 is 32.
 
+@@@There's an alternative => __lg(n). It works on O(1);
 
 
 +---------------------------------+
@@ -418,7 +419,9 @@ int main() {
 }
 it will print a number with reverse bits.
 
+------------------------
 @ Traversing a bitset @
+------------------------
  int n, k;
  cin >> n >> k;
  bitset<32> binary(n);
