@@ -452,3 +452,14 @@ int main() {
   }
   return 0;
 }
+
+
+
++---------------------------------+
+|        RELATION OF AND          |
++---------------------------------+
+Suppose, [1, 2, 3, 4, 5, 6].
+The more we will AND elements, the more the value will be lessened
+And the less, the less the value.
+For OR, this is different.
+

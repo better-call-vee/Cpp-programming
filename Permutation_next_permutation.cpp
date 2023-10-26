@@ -91,4 +91,10 @@ int main() {
 
     return 0;
 }
+
+
+if they give you a random permutation and ask for all the
+permutation I have to first sort the given permutation. then 
+next permutation.
+Also, we can use prev_permutation for previous permutation.
 */
