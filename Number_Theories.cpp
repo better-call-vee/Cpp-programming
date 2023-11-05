@@ -51,13 +51,13 @@ int main() {
     cout << "Adjusted count of multiples of " << y << ": " << y_div << endl;
     return 0;
 }
-------------
-FUN FACTS: |
-------------
-IF A NUMBER IS ONE LESS OR GREATER THAN A NUMBER, THEN THEIR GCD WILL BE 1!!!
+╔═══════════╗
+║ Fun facts ║
+╚═══════════╝
+🫴 IF A NUMBER IS ONE LESS OR GREATER THAN A NUMBER, THEN THEIR GCD WILL BE 1!!!
 
 
-Inclusive and exclusive ranges determine whether the endpoints of a range are 
+🫴 Inclusive and exclusive ranges determine whether the endpoints of a range are 
 included in the range or not. An inclusive range includes both endpoints, while 
 an exclusive range includes the start point but not the end point.
 
@@ -67,8 +67,9 @@ values greater than 1 and less than or equal to 4. In other words, the range
 
 To find the sum of the elements in this exclusive range, you simply add these 
 values together:
-
 2 + 3 + 4 = 9
+
+🫴 There will be (n * (n+1)) / 2 number of sub-arrays in an array.
 */
 
 /*
