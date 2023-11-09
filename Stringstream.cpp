@@ -12,7 +12,7 @@ vector<string> reverseWords(const string &input)
     string word;
     vector<string> reversedWords;
 
-    while (ss >> word)
+    while (ss >> word) //ss is the name, can be anything. it's like an input stream.
     {
         reverse(word.begin(), word.end());
         reversedWords.push_back(word);
