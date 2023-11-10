@@ -1,6 +1,7 @@
 /*some binary search related problems:
 https://github.com/tanvee009/XPSC_ARCHIEVE/tree/main/WEEK%2010/Day_1
 https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%2014/Day_7/Very_Easy_task.cpp
+https://github.com/better-call-vee/SELF_JOURNEY/blob/main/MATH/Binary_Search_Isosceles_triangle_And_Trapezium.cpp
 */
 
 //A complete codeforces course: https://codeforces.com/edu/course/2/lesson/6
