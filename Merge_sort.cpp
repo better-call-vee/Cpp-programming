@@ -2,24 +2,27 @@
 Merge Sort: A Tale of Splitting, Sorting, and Merging
 
 The Grand Picture:
-Imagine you're a chef sorting your spices. Merge Sort is like sorting each jar one by one,
-and then combining them together in order, to create an organized spice rack.
+Imagine you're a chef sorting your spices. Merge Sort is like sorting each jar
+one by one, and then combining them together in order, to create an organized
+spice rack.
 
 Divide and Conquer:
-Merge Sort is like a wise ruler who divides the land (array) into smaller territories(sub-arrays)
-to manage them more efficiently.
+Merge Sort is like a wise ruler who divides the land (array) into smaller
+territories(sub-arrays) to manage them more efficiently.
 
 The Recursive Dance:
-It’s a dance of dividing and conquering. Each step, we split the array into smaller ones,
-like a tree branching out. We keep going until each branch has a single leaf (element).
+It’s a dance of dividing and conquering. Each step, we split the array into
+smaller ones, like a tree branching out. We keep going until each branch has a
+single leaf (element).
 
 The Magic of Merging:
-Two tiny, sorted armies (sub-arrays) line up. The commanders (pointers) compare soldiers (elements). 
-The smallest soldier steps forward to form a new, larger, sorted army.
+Two tiny, sorted armies (sub-arrays) line up. The commanders (pointers) compare
+soldiers (elements). The smallest soldier steps forward to form a new, larger,
+sorted army.
 
 A Symphony of Sorting:
-Imagine an orchestra. Each musician (element) finds their right spot, creating a harmonious
-melody (sorted array).
+Imagine an orchestra. Each musician (element) finds their right spot, creating a
+harmonious melody (sorted array).
 
 
 Visual Journey Through Merge Sort:
@@ -46,8 +49,8 @@ A careful dance: Compare, select, and place.
 Outcome: [1, 2, 3, 5, 7] - a beautifully sorted array.
 
 Time Complexity :-
-Each split cuts the array in half - a logarithmic process (like peeling an onion layer by layer).
-Merging each level takes linear time - adding up the elements.
+Each split cuts the array in half - a logarithmic process (like peeling an onion
+layer by layer). Merging each level takes linear time - adding up the elements.
 
 Overall: O(n log n) - Efficient like a well-organized assembly line.
 
@@ -58,43 +61,40 @@ Then, a graceful merge. Like dancers finding their perfect spot on stage.
 Result: [1, 3, 5, 7, 8, 9] - a parade of numbers in perfect order.
 
 In Essence:
-Merge Sort is a story of breaking things down, sorting the pieces, and then putting them
-all back together in a perfect arrangement. It's a dance, a strategy, and an art form, 
-all rolled into one.
+Merge Sort is a story of breaking things down, sorting the pieces, and then
+putting them all back together in a perfect arrangement. It's a dance, a
+strategy, and an art form, all rolled into one.
 */
 
-
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 // Function to merge two sorted arrays
-vector<int> merge(vector<int>& left, vector<int>& right) {
+vector<int> merge(vector<int> &left, vector<int> &right) {
     vector<int> result;
     int leftIndex = 0, rightIndex = 0;
 
     // Merge elements from left and right arrays
-    while (leftIndex < left.size() && rightIndex < right.size()) {
-        if (left[leftIndex] < right[rightIndex]) 
+    while(leftIndex < left.size() && rightIndex < right.size()) {
+        if(left[leftIndex] < right[rightIndex])
             result.push_back(left[leftIndex++]);
-        else 
+        else
             result.push_back(right[rightIndex++]);
     }
 
     // Add remaining elements from left array
-    while (leftIndex < left.size()) 
-        result.push_back(left[leftIndex++]);
+    while(leftIndex < left.size()) result.push_back(left[leftIndex++]);
 
     // Add remaining elements from right array
-    while (rightIndex < right.size()) 
-        result.push_back(right[rightIndex++]);
+    while(rightIndex < right.size()) result.push_back(right[rightIndex++]);
 
     return result;
 }
 
 // Function for merge sort
-vector<int> merge_sort(vector<int>& a) {
+vector<int> merge_sort(vector<int> &a) {
     // Base case: if the array is empty or has one element, it is already sorted
-    if (a.size() <= 1) return a;
+    if(a.size() <= 1) return a;
 
     // Find the middle index for splitting the array
     int mid = a.size() / 2;
@@ -114,8 +114,7 @@ int main() {
     vector<int> sortedArray = merge_sort(a);
 
     // Print the sorted array
-    for (int val : sortedArray) 
-        cout << val << " ";
+    for(int val : sortedArray) cout << val << " ";
 
     return 0;
 }
