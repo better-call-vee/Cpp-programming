@@ -67,3 +67,15 @@ int main()
 //if we swap two adjacent elements, suppose a[i] and a[i+1], if a[i+1] is greater than a[i] then 
 //the inversion count will be ans+1. else the inversion will be one less.
 //descendingly sorted array/ something will have the maximum inversions.
+
+
+
+/*
+ans += p.size() - p.order_of_key(a[i] + 1);
+this is for finding strictly greater elements.
+
+p.order_of_key(a[i]) gives the strictly less elements count
+thant a[i]. we add 1 with a[i] to also include equivalent elements
+count. then we subtract this from the total size and get the
+strictly greater element count
+*/

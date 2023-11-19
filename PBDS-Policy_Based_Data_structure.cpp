@@ -68,6 +68,9 @@ int main()
     cout << "Number of strictly greater elements than 9: " << s.size() - less << "\n";
     // it will give wrong output because there are duplis in the inserts.
 
+ // Adding a unique identifier to each element in a Policy-Based Data Structure (PBDS) when
+ // using pairs is essential to handle duplicates effectively. The unique identifier 
+ // distinguishes elements with the same value, ensuring each pair in the PBDS is distinct. 
     PBDS<pair<int, int>> s2;
     s2.insert({2, 1});
     s2.insert({2, 2});

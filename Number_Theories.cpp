@@ -390,8 +390,9 @@ and for that (a-b) mod m = 0. 1 % 6 => 1 and 7 % 6 => 1. 7 - 1 = 6 mod 6 => 0.
 3) (a - b) ≡ (a mod m - b mod m) (mod m);
 4) (a x b) = (a mod m x b mod m) (mod m);
 5) a^b ≡ (a mod m)^b (mod m);
-6) a-b if negative ≡ ((a mod m - b mod m) % m + m) % m;
-
+-----------------------------------------------------------------------------
+NEGATIVE MODULAR: https://www.geeksforgeeks.org/modulus-on-negative-numbers/
+-----------------------------------------------------------------------------
 these don't work with a/b.
 #include<bits/stdc++.h>
 using namespace std;
@@ -447,6 +448,9 @@ int main() {
   cout << a << "^" << b << " mod m = " << power << endl;
   return 0;
 }
+
+
+
 */
 
 
