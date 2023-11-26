@@ -1,10 +1,7 @@
 /*
-  +----------+
-  | Better.  |
-  | Call.Vee |
-  +----+-----+
-       |
-       V
+//another problem on rotation: https://codeforces.com/contest/1896/problem/C(solution to
+be checked on submissions)
+
 The problem is we need to exchange the shoes of the students but someone's shoe can only be exchanged if
 there are shoes greater or equal sized than that person. And the sizes will be given ascendingly.
 we have to print the sequence of the exchanged shoes.
@@ -65,7 +62,8 @@ int main()
             rotate(exchange.begin() + start, exchange.begin() + start + 1,
                    exchange.begin() + end);
             // rotate the vector from the 2nd place to the last.
-            // suppose 1 2 3 4 5. start = 0. end = 4. then => 2 3 4 5 1.
+            // suppose 1 2 3 4 5. start = 0. middle parameter = 4. then => 2 3 4 5 1.
+            // rotated left 4 times
             // suppose 2 2 3 3 3 4 4 4 4. start = 5, end = 8. then 6 7 8 5.
             // the middle parameter is for choosing from which place we want to rotate.
             // if it were 2, we would do 7 8 5 6.

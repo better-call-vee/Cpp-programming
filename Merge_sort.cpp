@@ -69,52 +69,56 @@ strategy, and an art form, all rolled into one.
 #include <bits/stdc++.h>
 using namespace std;
 
-// Function to merge two sorted arrays
-vector<int> merge(vector<int> &left, vector<int> &right) {
-    vector<int> result;
-    int leftIndex = 0, rightIndex = 0;
+// Function to merge two sorted arrays into one sorted array.
+vector<int> merge(vector<int> &l, vector<int> &r) {
+    int n = l.size(), m = r.size(); // Sizes of the left and right arrays.
+    vector<int> ans;                // Vector to store the merged result.
+    int i = 0, j = 0; // Pointers for traversing the left and right arrays.
 
-    // Merge elements from left and right arrays
-    while(leftIndex < left.size() && rightIndex < right.size()) {
-        if(left[leftIndex] < right[rightIndex])
-            result.push_back(left[leftIndex++]);
+    // Merge elements from the left and right arrays in sorted order.
+    while(i < n && j < m) {
+        if(l[i] < r[j])
+            ans.push_back(l[i++]); // If left element is smaller, add it to ans.
         else
-            result.push_back(right[rightIndex++]);
+            ans.push_back(r[j++]); // Otherwise, add the right element.
     }
 
-    // Add remaining elements from left array
-    while(leftIndex < left.size()) result.push_back(left[leftIndex++]);
+    // Add remaining elements from left array, if any.
+    while(i < n) ans.push_back(l[i++]);
 
-    // Add remaining elements from right array
-    while(rightIndex < right.size()) result.push_back(right[rightIndex++]);
+    // Add remaining elements from right array, if any.
+    while(j < m) ans.push_back(r[j++]);
 
-    return result;
+    return ans; // Return the merged sorted array.
 }
 
-// Function for merge sort
-vector<int> merge_sort(vector<int> &a) {
-    // Base case: if the array is empty or has one element, it is already sorted
-    if(a.size() <= 1) return a;
+vector<int> a; // Global array to hold the input.
 
-    // Find the middle index for splitting the array
-    int mid = a.size() / 2;
-    vector<int> left(a.begin(), a.begin() + mid);
-    vector<int> right(a.begin() + mid, a.end());
+// Recursive function to perform merge sort.
+vector<int> merge_sort(int l, int r) {
+    if(l == r) return {a[l]}; // Base case: single element is already sorted.
 
-    // Recursively sort both halves
-    left = merge_sort(left);
-    right = merge_sort(right);
+    int mid = (l + r) >> 1; // Find the middle index for splitting.
+    vector<int> left = merge_sort(l, mid); // Recursively sort the left half.
+    vector<int> right = merge_sort(mid + 1, r); // Recursively sort the right half.
 
-    // Merge the sorted halves
-    return merge(left, right);
+    return merge(left, right); // Merge the sorted halves and return.
 }
 
 int main() {
-    vector<int> a = {5, 3, 7, 1, 8, 9};
-    vector<int> sortedArray = merge_sort(a);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
 
-    // Print the sorted array
-    for(int val : sortedArray) cout << val << " ";
+    int n;
+    cin >> n;    // Read the number of elements.
+    a.resize(n); // Resize the global array to hold n elements.
+    for(int i = 0; i < n; i++) cin >> a[i]; // Read elements into the array.
+
+    vector<int> ans = merge_sort(0, n - 1); // Perform merge sort on the array.
+
+    // Print the sorted array.
+    for(int i = 0; i < n; i++) 
+        cout << ans[i] << ' ';
 
     return 0;
 }
