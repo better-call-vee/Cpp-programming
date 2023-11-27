@@ -1,49 +1,29 @@
+/*
+The Euclidean algorithm is based on a simple, yet powerful,
+principle: the GCD of two numbers does not change if the larger number is
+replaced by its difference with the smaller number. In a more practical sense,
+for two integers, a and b where a > b, the GCD of a and b is the same as the GCD
+of b and mod a mod b. because if a number d divides both a and b, it must also
+divide a mod b. Thus, any divisor of a and b is also a divisor of b and a mod b.
+
+also it doesn't matter whether we are giving a as bigger number or b as bigger
+number, eventually the bigger number will be set to a because of the mod
+operation.
+
+We can keep applying this process recursively. In each step, we replace
+a with b and b with a mod b, until b becomes 0. At that point, a is the GCD.
+*/
+
 #include <iostream>
 using namespace std;
 
-/*
-    The GCD of two integers a and b is the same as the GCD of b and a mod b.
-    The GCD of any integer a and 0 is a.
-
-Let's delve into the logic behind the Euclidean algorithm.
-Basic Idea:
-
-If we have two numbers, a and b, where a>b, then the GCD of a and b is the
-same as the GCD of b and the remainder when a is divided by b. The algorithm
-keeps applying this property recursively until b becomes 0. At that point, a 
-is the GCD.
-*/
-
-int gcd(int a, int b) {
-    // Base case: If b is 0, the GCD is a
-    if (b == 0) {
-        return a;
-    }
-
-    // by recursively calling gcd with b and the remainder of a divided by b
-    return gcd(b, a % b);
-}
+int gcd(int a, int b) { return b == 0 ? a : gcd(b, a % b); }
 
 int main() {
     int a, b;
+    cout << "Enter two numbers: ";
     cin >> a >> b;
 
-    int grt = max(a, b);
-    int less =min(a, b);
-
-    int result = gcd(grt, less);
-
-    cout << "GCD: " << result << endl;
-
+    cout << "GCD of " << a << " and " << b << " is " << gcd(a, b) << endl;
     return 0;
 }
-
-//it's a very easy gcd method. 
-//we select a as the greater number and b as the less number.
-//everytime we get the remainder. then we take previously set b as a now and
-//take the remainder as b.
-//we continue this until b becomes 0. if b becomes 0 then a is the gcd.
-/*
-If c is divisible by the GCD of a and b, then it's possible to make c using a and b. This is because
-the GCD represents the common factor that can be multiplied by a and b to obtain any multiple of it. 
-*/
