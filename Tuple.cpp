@@ -59,5 +59,26 @@ int main() {
         make_tuple(make_pair(0, 1), 2, make_tuple(3, 4));
     cout << get<0>(t3).first << ' ' << get<0>(t3).second << ' ' << get<1>(t3)
          << ' ' << get<0>(get<2>(t3)) << ' ' << get<1>(get<2>(t3)) << '\n';
+
+
+    //vector of tuple
+     vector<tuple<int, int, int>> asteroids;
+    for(int i = 0; i < n; i++) {
+        int t, z, y;
+        cin >> t >> z >> y;
+        asteroids.push_back(make_tuple(t, z, y));
+    }
+
+    for (int i = 0; i < n; i++) {
+        // Accessing elements of the tuple at the ith position in the vector
+        int t = get<0>(asteroids[i]);
+        int z = get<1>(asteroids[i]);
+        int y = get<2>(asteroids[i]);
+
+        //or, tie(t, z, y) = asteroids[i];
+
+        // Use t, z, y as needed
+        cout << "t: " << t << ", z: " << z << ", y: " << y << endl;
+    }
     return 0;
 }
