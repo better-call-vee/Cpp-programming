@@ -41,5 +41,7 @@ int main() {
 }
 
 /*
-
+std::ranges::partition_point doesn't directly store ans. Instead, it iterates through k values, and the ans
+variable holds the last valid k value that satisfied the condition when the function returned false, effectively
+representing the answer.
 */
