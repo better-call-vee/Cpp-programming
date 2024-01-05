@@ -213,7 +213,7 @@ bit from 1 to 0. This is because odd numbers always have their least significant
  even number.
 
 XOR of an even number with 1:
-=-===========================
+=============================
 Let's take an example of an even number, say 6 (binary representation: 0110). If we XOR it with
 1 (binary representation: 0001), we get the result: 0110 XOR 0001 = 0111 (binary representation of 7).
 The motive behind this is that when we XOR an even number with 1, it essentially "flips" the rightmost

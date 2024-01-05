@@ -13,6 +13,12 @@ void cnt_setbit(int id, int num) {
         int LSB = num & -num, th_position = __lg(LSB);
         bitcounts[id][th_position]++;
         num &= (num - 1); // or num -= LSB;
+        // Clears the least significant set bit in num. This is a standard
+        // technique in bit manipulation: subtracting 1 from num flips all bits
+        // up to and including the first set bit, and the bitwise AND with the
+        // original num clears that bit.
+        // or, Subtracting LSB from num directly removes the least significant
+        // set bit.
     }
 }
 
