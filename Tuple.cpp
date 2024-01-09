@@ -24,6 +24,12 @@ auto [first_element, second_element, third_element] = t1;
  (C++17 or above)
 
 You can also have an array of tuples, tuples of tuples, tuples of pairs, etc.
+
+--------------------------------------------------------------
+
+NB: You can add more than 3 parts in tuple!!
+
+--------------------------------------------------------------
 */
 
 #include <bits/stdc++.h>
