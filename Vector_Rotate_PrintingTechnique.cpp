@@ -80,3 +80,38 @@ Syntax: rotate(Iterator first, Iterator middle, Iterator last)
 
     return 0;
 }
+
+/*
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int main() {
+    cin.tie(nullptr)->sync_with_stdio(false);
+    int n, x;
+    cin >> n;
+    vector<pair<int, int>> a;
+    for(int i = 0; i < n; i++) {
+        cin >> x;
+        a.emplace_back(x, i + 1);
+    }
+    rotate(a.begin(), a.begin() + 5, a.end());
+    for(int i = 0; i < n; i++) cout << a[i].first << " ";
+    cout << "\n";
+    for(int i = 0; i < n; i++) cout << a[i].second << " ";
+
+    return 0;
+}
+
+run this to understand better about vector rotate.
+9
+2 2 3 3 3 4 4 4 4
+
+output will be:
+4 4 4 4 2 2 3 3 3
+6 7 8 9 1 2 3 4 5
+
+if you right the end pointer a.begin() + 8;
+it will be
+4 4 4 2 2 3 3 3 4
+6 7 8 1 2 3 4 5 9
+*/
