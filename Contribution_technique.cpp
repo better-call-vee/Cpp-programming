@@ -141,23 +141,23 @@ suppose,  1 2 3 4 5
 4 will be min in 2^(2 - 1) subsets, so min = 4 * 2^(2 - 1).  (including single
 subset(only 4)) => we are not taking the element itself in the code btw.
 */
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-int main() {
-    cin.tie(nullptr)->sync_with_stdio(false);
-    vector<int> a = {1, 2, 3, 4, 5};
-    ll ans = 0;
-    int n = a.size();
-    sort(a.begin(), a.end());
-    for(int i = 0; i < n; i++) {
-        ll maxContribution = (ll)a[i] * (1LL << i);
-        ll minContribution = (ll)a[i] * (1LL << (n - i - 1));
-        ans += (maxContribution - minContribution);
-    }
-    cout << "Sum of max-min of subsets: " << ans << '\n';
-    return 0;
-}
+// #include <bits/stdc++.h>
+// using namespace std;
+// using ll = long long;
+// int main() {
+//     cin.tie(nullptr)->sync_with_stdio(false);
+//     vector<int> a = {1, 2, 3, 4, 5};
+//     ll ans = 0;
+//     int n = a.size();
+//     sort(a.begin(), a.end());
+//     for(int i = 0; i < n; i++) {
+//         ll maxContribution = (ll)a[i] * (1LL << i);
+//         ll minContribution = (ll)a[i] * (1LL << (n - i - 1));
+//         ans += (maxContribution - minContribution);
+//     }
+//     cout << "Sum of max-min of subsets: " << ans << '\n';
+//     return 0;
+// }
 
 //-------------------------------------------------------------------------------------------
 /*
@@ -203,8 +203,10 @@ int32_t main() {
     int ans = 0;
     for(int i = 1; i <= n; i++) {
         int contrib = (1LL * S(i, n) * i % mod -
-                       1LL * (n - i + 1) * S(1, i) % mod + mod) % mod;
-        // + mod because it can produce negatives, so negative's mod formula applied.
+                       1LL * (n - i + 1) * S(1, i) % mod + mod) %
+                      mod;
+        // + mod because it can produce negatives, so negative's mod formula
+        // applied.
         contrib = (contrib + 1LL * (n - i + 1) * i % mod) % mod;
         ans += 1LL * a[i] * contrib % mod;
         ans %= mod;
@@ -212,3 +214,51 @@ int32_t main() {
     cout << ans << '\n';
     return 0;
 }
+
+/*
+Ex : 7 => Sum of Number of Inversions in Permutations
+there will be n! permutations of n numbered of elements.
+suppose, 1 2 3.
+1 2 3
+1 3 2   see, 3 1, this inversion is 3 times there and the other 3 times 1 3.
+3 2 1   so, every half of the n! is it's inversion count. now why n*(n-1)/2?
+3 1 2   for, 3, it will have inversions with 2 and 1. for 1, no one. for 2,
+2 3 1   only 1. so, sum of 1 to n - 1.
+2 1 3
+*/
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+ll f(int n) {
+    if(n <= 1) return 1;
+    return n * f(n - 1);
+}
+int main() {
+    cin.tie(nullptr)->sync_with_stdio(false);
+    int n;
+    cin >> n;
+    cout << f(n) << "\n";
+    cout << 1LL * (f(n) / 2) * (n * (n - 1) / 2);
+    return 0;
+}
+
+/*
+sum of vowel containing sub-arrays:
+
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int main() {
+    cin.tie(nullptr)->sync_with_stdio(false);
+    string s;
+    cin >> s;
+    ll ans = 0;
+    for(int i = 0; i < n; i++) {
+        if(s[i] == 'a' or s[i] == 'e' or s[i] == 'i' or s[i] == 'o' or
+           s[i] == 'u')
+            ans += 1LL * (i + 1) * (n - i);
+    }
+    cout << ans << "\n";
+    return 0;
+}
+*/

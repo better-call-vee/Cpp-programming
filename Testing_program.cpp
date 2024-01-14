@@ -3,17 +3,14 @@ using namespace std;
 using ll = long long;
 int main() {
     cin.tie(nullptr)->sync_with_stdio(false);
-    int n, x;
-    cin >> n;
-    vector<pair<int, int>> a;
+    string s;
+    cin >> s;
+    ll ans = 0, n = s.size();
     for(int i = 0; i < n; i++) {
-        cin >> x;
-        a.emplace_back(x, i + 1);
+        if(s[i] == 'a' or s[i] == 'e' or s[i] == 'i' or s[i] == 'o' or
+           s[i] == 'u')
+            ans += 1LL * (i + 1) * (n - i);
     }
-    rotate(a.begin(), a.begin() + 5, a.end());
-    for(int i = 0; i < n; i++) cout << a[i].first << " ";
-    cout << "\n";
-    for(int i = 0; i < n; i++) cout << a[i].second << " ";
-
+    cout << ans;
     return 0;
 }
