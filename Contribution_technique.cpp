@@ -105,7 +105,9 @@ If it says all pairs' XOR, then it will be absolute zero. You know why 😉
 //     cout << "XOR of Sub-arrays XOR: " << result_xor << "\n";
 //     return 0;
 // }
-
+//----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
 /*
 Ex : 5 => Sum of max - min of subsets.
 here, suppose, 1 2 3 4 5.
@@ -137,7 +139,7 @@ we can take the contribution of how many times an element will be max and how
 many times it will be min and we will subtract the min contribution from the
 max.
 suppose,  1 2 3 4 5
-4 will be max in 2^(4 - 1) subsets. so max = 4 * 2^(4 - 1). second 4 = index(n);
+4 will be max in 2^(4 - 1) subsets. so max = 4 * 2^(4 - 1). here, second 4 = index(n);
 4 will be min in 2^(2 - 1) subsets, so min = 4 * 2^(2 - 1).  (including single
 subset(only 4)) => we are not taking the element itself in the code btw.
 */
