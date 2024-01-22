@@ -99,11 +99,11 @@ see, for 1 1 1 1, we will be able to make 2^4 subsets, among them half will make
 subsets with odd number of 1. it's a simple logic, just simple thinking. among
 2^4 subsets, the subsets which have odd number of 1, there will be even number
 of 1 after we will add one more 1. so half odd, half even. thus, 2^(cnt[1] - 1);
-half means division by 2 and thus power one minus.
-now, come to the zeroes. they will make nit 2^(cnt[0]) subsets.
-now, ulitmately => 2^(cnt[0] + cnt[1] - 1) subsets will be there with odd 1
-count(XOR 1, not 0)
-which is actually 2^(n - 1) [cnt[0] + cnt[1] == n]
+half means division by 2 and thus power one minus. Make subsets of four 1s, you
+will be able to observe.
+now, come to the zeroes. they will make nit 2^(cnt[0])
+subsets. now, ulitmately => 2^(cnt[0] + cnt[1] - 1) subsets will be there with
+odd 1 count(XOR 1, not 0) which is actually 2^(n - 1) [cnt[0] + cnt[1] == n]
 
 N.B: We will need the usage of mod for this. high values expected.
 
@@ -126,7 +126,7 @@ For AND, we will only take 2^(cnt[1]). this time no minus needed, AND just need
 //     for(int i = 0; i <= 30; i++) {
 //		   if(!cnt[i][1]) continue; // corner case
 //		   // if there is no one, then what's the point of all
-//calculations.
+// calculations.
 //         int contribution = 1 << (n - 1);
 //         ans += contribution * (1 << i);
 //         // bit by bit calcultaion, so for sum we need to apply
@@ -135,3 +135,107 @@ For AND, we will only take 2^(cnt[1]). this time no minus needed, AND just need
 //     cout << ans;
 //     return 0;
 // }
+//----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
+/*
+Number of Sub-arrays with XOR 0:
+
+Compute the prefix XOR array p. Then, for each i, we need to find the number of
+l < r such that p[r] ⨁ p[l-1] = 0. So, we need to find the number of l < r such
+that p[r] = p[l-1]. We can use a map to store the number of times each value
+appears in the prefix XOR array. Then, for each r, we can get the number of 1 ≤
+l ≤ r such that p[r] = p[l-1] which is same as number 0 ≤ l < r such that p[r] =
+p[l]; T.C. => O(nlogn);
+The XOR of a sub-array from l to r can be found by p[r] ⨁ p[l-1]. If this is 0,
+then p[r] = p[l-1]
+
+Imagine a = [4, 2, 2, 6, 4].
+Prefix XOR p = [0, 4, 6, 4, 2, 6] (with p[0] = 0).
+Thus mp[p[0]]++;
+*/
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// const int N = 1e6 + 9;
+// int a[N], p[N];
+
+// int32_t main() {
+//     ios_base::sync_with_stdio(0);
+//     cin.tie(0);
+//     int n;
+//     cin >> n;
+//     for(int i = 1; i <= n; i++) {
+//         cin >> a[i];
+//         p[i] = p[i - 1] ^ a[i];
+//     }
+//     map<int, int> mp;
+//     long long ans = 0;
+//     mp[p[0]]++; // don't forget to add this (why?)
+//     for(int i = 1; i <= n; i++) {
+//         ans += mp[p[i]];
+//         mp[p[i]]++;
+//     }
+//     cout << ans << '\n';
+//     return 0;
+// }
+
+//----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
+/*
+SUM OF ALL SUBARRAY XOR * LENGTH.
+
+Just print the code with example:
+3
+1 2 3
+and try to understand.
+We take the cumulative prefix XOR.
+why c[b^1]?
+You know what prefix[r] = prefix[l] when their xor is 0.
+So, we only take which have a cumulative XOR not equal to 0.
+and then, we just subtract the opposite set's(if set = 1, then opposite = 0 and
+vice versa) cumulative indices count, which is because they will make subarrays
+among themselves and their length should be out of count.
+*/
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+const int N = 3e5 + 9, mod = 998244353;
+int a[N];
+int main() {
+    cin.tie(nullptr)->sync_with_stdio(false);
+    int n;
+    cin >> n;
+    for(int i = 1; i <= n; i++) {
+        cin >> a[i];
+        a[i] ^= a[i - 1];
+    }
+    int ans = 0;
+    for(int k = 0; k < 2; k++) {
+        vector<int> s(2), c(2);
+        c[0] = 1;
+        for(int i = 1; i <= n; i++) {
+            int b = (a[i] >> k) & 1;
+            cout << "b => " << b << "\n";
+            cout << "c[b^1] => " << c[b ^ 1] << "\n";
+            cout << "s[b^1] => " << s[b ^ 1] << "\n";
+            ans = (ans + 1LL * (1LL * c[b ^ 1] * i % mod - s[b ^ 1] + mod) %
+                             mod * (1 << k)) %
+                  mod;
+            cout << "ans => " << ans << "\n";
+            c[b]++;
+            for(int i = 0; i < 2; i++) {
+                cout << "c[" << i << "]: " << c[i] << "\n";
+            }
+            s[b] = (s[b] + i) % mod;
+            for(int i = 0; i < 2; i++) {
+                cout << "s[" << i << "]: " << s[i] << "\n";
+            }
+            cout << "\n";
+        }
+        cout << "\n\n\n";
+    }
+    cout << ans << '\n';
+    return 0;
+}

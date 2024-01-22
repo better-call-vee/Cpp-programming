@@ -5,8 +5,8 @@
 Given two integers x and y, and a range from 1 to n:
 
     Calculating Multiples of x and y:
-        The total number of multiples of x within the range is ⌊nx⌋⌊xn​⌋.
-        The total number of multiples of y within the range is ⌊ny⌋⌊yn​⌋.
+        The total number of multiples of x within the range is ⌊nx⌋⌊xn⌋.
+        The total number of multiples of y within the range is ⌊ny⌋⌊yn⌋.
 
     Identifying Common Multiples of x and y:
         The common multiples of x and y within a given range are the multiples of their Least Common Multiple (LCM).
@@ -14,7 +14,7 @@ Given two integers x and y, and a range from 1 to n:
         LCM(a, b)= a × b / GCD(a, b)
 
         Here, GCD stands for the Greatest Common Divisor.
-        The count of common multiples of x and y in the range is ⌊nLCM(x,y)⌋⌊LCM(x,y)n​⌋.
+        The count of common multiples of x and y in the range is ⌊nLCM(x,y)⌋⌊LCM(x,y)n⌋.
 
     Adjustment for Common Multiples:
         Subtract the count of common multiples from the multiples of x and y to get the adjusted counts.
@@ -188,7 +188,7 @@ int main() {
 
     return 0;
 }
-
+/*
 Let C(n, r) = number of ways to select r elements from n elements
 Then C(n, r) = C(n - 1, r) + C(n - 1, r - 1)
 Do you know the proof of this?
@@ -207,6 +207,10 @@ Consider the first element 1.
 
 So total ways = C(n, r) = C(n - 1, r) + C(n - 1, r - 1)
 
+----------------------------------
+to be more specific:             |
+C(n, k) = n! / (k! * (n - k)!)   |
+----------------------------------
 */
 
 
@@ -392,6 +396,8 @@ and for that (a-b) mod m = 0. 1 % 6 => 1 and 7 % 6 => 1. 7 - 1 = 6 mod 6 => 0.
 5) a^b ≡ (a mod m)^b (mod m);
 -----------------------------------------------------------------------------
 NEGATIVE MODULAR: https://www.geeksforgeeks.org/modulus-on-negative-numbers/
+((a % b) + b) % b;
+or (a + b) % b;
 -----------------------------------------------------------------------------
 these don't work with a/b.
 #include<bits/stdc++.h>

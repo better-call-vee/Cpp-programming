@@ -466,3 +466,29 @@ The more we will AND elements, the more the value will be lessened
 And the less, the less the value.
 For OR, this is different.
 
+
+
++---------------------------------+
+|    CHECK k-th bit SET or NOT    |
++---------------------------------+
+#include <iostream>
+bool isKthBitSet(int n, int k) {
+    // Right shift n by k and bitwise AND with 1
+    return (n >> k) & 1;
+
+    // or,
+    // // Shift 1 k-1 times to create a mask
+    // int mask = 1 << (k - 1);
+
+    // // Use bitwise AND to check if the k-th bit is set
+    // return (n & mask) != 0;
+}
+int main() {
+    int number = 5; // Example number (binary: 101)
+    int k = 2;      // Bit position to check (0-indexed)
+    if (isKthBitSet(number, k))
+        std::cout << "The " << k + 1 << "-th bit is set.\n";
+    else
+        std::cout << "The " << k + 1 << "-th bit is not set.\n";
+    return 0;
+}
