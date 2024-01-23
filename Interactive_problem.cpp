@@ -43,7 +43,8 @@ int main() {
         }
     }
     cout << "! " << ans << "\n";
-    cout.flush() return 0;
+    cout.flush();
+    return 0;
 }
 
 // https://codeforces.com/contest/1867/problem/C
@@ -163,4 +164,47 @@ int main() {
     cout << "! " << ans << endl;
     return 0;
 }
+*/
+
+/*
+//Tricky one
+//https://codeforces.com/contest/1486/problem/C2
+
+#include <bits/stdc++.h>
+using namespace std;
+int ask(int l, int r) {
+    if(l >= r) return -1;
+    cout << "? " << l << ' ' << r << endl;
+    int ans;
+    cin >> ans;
+    return ans;
+}
+int main() {
+    int n;
+    cin >> n;
+    int l = 1, r = n + 1;
+    while(r - l > 1) {
+        int m = (l + r) / 2;
+        int smax = ask(l, r - 1);
+        if(smax < m) {
+            if(ask(l, m - 1) == smax)
+                r = m;
+            else
+                l = m;
+        } else {
+            if(ask(m, r - 1) == smax)
+                l = m;
+            else
+                r = m;
+        }
+    }
+    cout << "! " << l << endl;
+    return 0;
+}
+// When r = n, the binary search might miss the last element because it
+// checks for the condition r - l > 1. If the maximum element is at the end, the
+// code might not correctly identify it.
+// Binary search is prone to off-by-one errors. The condition r = n + 1 helps
+// mitigate these errors by simplifying the decision logic in the binary search,
+// as it clearly defines the ranges for subsequent queries.
 */
