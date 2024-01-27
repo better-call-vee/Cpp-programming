@@ -53,7 +53,7 @@ previously with the 0 and 1 array we depicted every bit
 actually, take a look at the bits. i.e.: the 3rd bit: 0 0 1 1.
 there will be 2*2*2 combinations where 0 and 1 will pair. and thus,
 we will get 1. therefore, that will be added in total contribution
-by 2^number of combinations.
+by 2^number of combinations(setting that msb);
 
 
 for AND => cnt[1] * cnt[1];
@@ -239,3 +239,54 @@ int main() {
     cout << ans << '\n';
     return 0;
 }
+
+//----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
+//PERMUTATIONS OF ALL PAIR XOR between a and b array https://codeforces.com/gym/104333/problem/A
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+const int mod = 1e9 + 7;
+int main() {
+    cin.tie(nullptr)->sync_with_stdio(false);
+    int n;
+    cin >> n;
+    vector<int> a(n), b(n), cnt(20, 0);
+    for(int i = 0; i < n; i++) cin >> a[i];
+    for(int i = 0; i < n; i++) cin >> b[i];
+    ll perms = 1, sum = 0;
+    for(int i = 1; i < n; i++) perms = (1LL * perms * i) % mod;
+    for(int i = 0; i < 20; i++)
+        for(int j = 0; j < n; j++)
+            if((a[j] >> i) & 1) cnt[i]++;
+    for(int i = 0; i < 20; i++) {
+        ll contrb = (1LL * perms * (1 << i)) % mod;
+        for(int j = 0; j < n; j++) {
+            if((b[j] >> i) & 1)
+                sum += (n - cnt[i]) * contrb % mod;
+            else
+                sum += cnt[i] * contrb % mod;
+        }
+    }
+
+    cout << sum % mod;
+    return 0;
+}
+
+/*
+Line 13:
+the key observation is that each particular element from array a will be paired
+with every element from array b exactly (n - 1)! times across all n!
+permutations. This is because for any fixed position in the permutation, there
+are (n - 1)! ways to arrange the remaining elements. Therefore, the code
+calculates cntx as (n - 1)! to represent the number of times each a[i] will be
+paired with each bit position of the b array elements.
+
+Line 20 to 23:
+we stored 'a' array's set bit counts of each element in the cnt vector. Now XOR
+will only contribute while 1 ^ 0 will happen. For all pair XORs of permutation
+between a and b, if 'b' array's current bit is not set, we go with the count of
+set bits of 'a' array on that position. Also, when 'b' array's current bit is
+set, we go with the 'a' array's not set bit count on that particular position.
+*/
