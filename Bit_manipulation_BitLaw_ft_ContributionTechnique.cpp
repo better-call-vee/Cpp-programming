@@ -135,6 +135,42 @@ For AND, we will only take 2^(cnt[1]). this time no minus needed, AND just need
 //     cout << ans;
 //     return 0;
 // }
+
+/*
+GIVEN THE ORs of Some segment, output the XOR sum of ALL SUBSETS.
+https://codeforces.com/contest/1614/problem/C
+Whatever the ORs of segment is, we need to focus on the total OR and
+only that will matter for XOR sum of subsets. We get a total OR and
+we calculate the total XOR sum. And then multiply with total_or. the
+multiplication ensures the correctness handling the edge case(where
+there is no 1 in a bit)
+*/
+#include <bits/stdc++.h>
+using namespace std;
+const int mod = 1e9 + 7;
+int32_t main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    int t;
+    cin >> t;
+    while(t--) {
+        int n, m;
+        cin >> n >> m;
+        int total_or = 0;
+        for(int i = 1; i <= m; i++) {
+            int l, r, x;
+            cin >> l >> r >> x;
+            total_or |= x;
+        }
+        int ans = 1;
+        for(int i = 1; i < n; i++) {
+            ans = (ans * 2) % mod;
+        }
+        ans = 1LL * ans * total_or % mod;
+        cout << ans << '\n';
+    }
+    return 0;
+}
 //----------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------
@@ -243,7 +279,8 @@ int main() {
 //----------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------
-//PERMUTATIONS OF ALL PAIR XOR between a and b array https://codeforces.com/gym/104333/problem/A
+// PERMUTATIONS OF ALL PAIR XOR between a and b array
+// https://codeforces.com/gym/104333/problem/A
 #include <bits/stdc++.h>
 using namespace std;
 using ll = long long;

@@ -69,3 +69,24 @@ int main() {
 
     return 0;
 }
+
+// #include<iostream>
+// using namespace std;
+
+// int main(){
+
+//   int num1 = 1;
+//   int num2 = 2;
+
+//   // invoked as soon as it is defined
+//   auto sum = [] (int a, int b) {
+//     return a + b;
+//   } (num1, num2);
+
+//    cout << "The sum of " << num1 << " and " << num2  << " is " << sum;
+
+//   return 0;
+// }
+
+
+//https://www.programiz.com/cpp-programming/lambda-expression

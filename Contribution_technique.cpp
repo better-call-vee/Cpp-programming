@@ -139,9 +139,10 @@ we can take the contribution of how many times an element will be max and how
 many times it will be min and we will subtract the min contribution from the
 max.
 suppose,  1 2 3 4 5
-4 will be max in 2^(4 - 1) subsets. so max = 4 * 2^(4 - 1). here, second 4 = index(n);
-4 will be min in 2^(2 - 1) subsets, so min = 4 * 2^(2 - 1).  (including single
-subset(only 4)) => we are not taking the element itself in the code btw.
+4 will be max in 2^(4 - 1) subsets. so max = 4 * 2^(4 - 1). here, second 4 =
+index(n); 4 will be min in 2^(2 - 1) subsets, so min = 4 * 2^(2 - 1). Not
+including single subsets including only 4 anywhere(min or max), because, they
+will give 0.
 */
 // #include <bits/stdc++.h>
 // using namespace std;
