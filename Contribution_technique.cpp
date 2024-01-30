@@ -265,3 +265,49 @@ int main() {
     return 0;
 }
 */
+
+//----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
+/*
+SUM of all pairs Differences where i < j(subsets):
+
+It's quite similar to the sum of all subsets max - min problem. Here, just an
+addition is multiplying the whole sum with 2^(n-2). Why? see, when we will take
+the difference of two numbers in account we will have n-2 choices to add an
+element to that subset. So, with that particular i and j, we will be able to get
+2^(n-2) subsets. Which implies that we will get a particular amount of
+combinations where a particular i and j will make combination and that is
+2^(n-2).
+For (1,5,9,2): [1, 5]  [1, 2]  [1, 9]  [5, 2]  [5, 9]  [9, 2]  [1, 5, 9]
+[1, 5, 2]  [1, 9, 2]  [5, 9, 2]  [1, 5, 9, 2];
+
+see, every combination here is 2^(n-2) times present.
+*/
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+const int mod = 1e9 + 7;
+const int N = 1e5;
+vector<int> twospower(N, 1);
+int main() {
+    cin.tie(nullptr)->sync_with_stdio(false);
+    for(int i = 1; i < N; i++) twospower[i] = twospower[i - 1] * 2 % mod;
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+    if(n == 1) {
+        cout << a[0];
+        return 0;
+    }
+    sort(a.begin(), a.end());
+    ll total = 0;
+    for(int i = 0; i < n; i++) {
+        ll contrb =
+            ((1LL * a[i] * i - 1LL * a[i] * (n - i - 1)) % mod + mod) % mod;
+        total = (total + contrb) % mod;
+    }
+    cout << (1LL * total * twospower[n - 2]) % mod;
+    return 0;
+}

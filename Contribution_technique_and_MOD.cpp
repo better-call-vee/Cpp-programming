@@ -48,3 +48,37 @@ let's see (1 << 13)
        1 (MSB) | Current bit is 1 | result *= base^8       => base = 256, becomes 65536 => we loss eight 2 from 8, we have 0
 
 */
+
+
+/*
+This storing one is better:
+line 65:
+
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+const int mod = 1e9 + 7;
+const int N = 1e5;
+vector<int> twospower(N, 1);
+int main() {
+    cin.tie(nullptr)->sync_with_stdio(false);
+    for(int i = 1; i < N; i++) twospower[i] = twospower[i - 1] * 2 % mod;
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+    if(n == 1) {
+        cout << a[0];
+        return 0;
+    }
+    sort(a.begin(), a.end());
+    ll total = 0;
+    for(int i = 0; i < n; i++) {
+        ll contrb =
+            ((1LL * a[i] * i - 1LL * a[i] * (n - i - 1)) % mod + mod) % mod;
+        total = (total + contrb) % mod;
+    }
+    cout << (1LL * total * twospower[n - 2]) % mod;
+    return 0;
+}
+*/
