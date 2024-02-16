@@ -32,3 +32,6 @@ int main()
 
     return 0;
 }
+/*
+__builtin_clzll for long long and then 63 - __builtin_clzll.
+*/

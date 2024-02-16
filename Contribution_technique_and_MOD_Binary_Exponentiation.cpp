@@ -33,6 +33,10 @@ int main() {
     return 0;
 }
 
+/*
+THIS IS CALLED BINARY EXPONENTIATION:
+LATER I CREATED ONE FILE DESCRIBING THIS. SEARCH BINARY EXPONENTIATION.
+*/
 
 /*
 It's that same Max - Min sums of subsets. 

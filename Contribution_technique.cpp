@@ -311,3 +311,16 @@ int main() {
     cout << (1LL * total * twospower[n - 2]) % mod;
     return 0;
 }
+
+/*
+
+Educational Outreach: To inform and educate users about the historical and
+cultural significance of each site, promoting a deeper understanding of
+Bangladesh's rich heritage. Cultural Preservation: To contribute towards the
+preservation of historical sites by raising awareness and fostering a sense of
+responsibility among the populace and authorities. Tourism Enhancement: To boost
+local and international tourism by showcasing the beauty and historical depth of
+Bangladesh's sites, thus contributing to economic development. Community
+Engagement: To involve local communities in the storytelling process, ensuring
+that oral histories and lesser-known facts are preserved and shared.
+*/

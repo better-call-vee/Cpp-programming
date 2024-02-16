@@ -9,17 +9,17 @@ Given two integers x and y, and a range from 1 to n:
         The total number of multiples of y within the range is ⌊ny⌋⌊yn⌋.
 
     Identifying Common Multiples of x and y:
-        The common multiples of x and y within a given range are the multiples of their Least Common Multiple (LCM).
-        The formula for LCM of two numbers aa and bb is:
-        LCM(a, b)= a × b / GCD(a, b)
+        The common multiples of x and y within a given range are the multiples
+of their Least Common Multiple (LCM). The formula for LCM of two numbers aa and
+bb is: LCM(a, b)= a × b / GCD(a, b)
 
         Here, GCD stands for the Greatest Common Divisor.
-        The count of common multiples of x and y in the range is ⌊nLCM(x,y)⌋⌊LCM(x,y)n⌋.
+        The count of common multiples of x and y in the range is
+⌊nLCM(x,y)⌋⌊LCM(x,y)n⌋.
 
     Adjustment for Common Multiples:
-        Subtract the count of common multiples from the multiples of x and y to get the adjusted counts.
-    #include <bits/stdc++.h>
-using namespace std;
+        Subtract the count of common multiples from the multiples of x and y to
+get the adjusted counts. #include <bits/stdc++.h> using namespace std;
 
 // Compute GCD using the Euclidean algorithm
 int gcd(int a, int b) {
@@ -32,10 +32,9 @@ int lcm(int a, int b) {
     return (a * b) / gcd(a, b);
 }
 
-// Adjust the count of multiples of x and y in the range 1 to n, considering common multiples
-void adjust_multiples(int n, int x, int y, int &x_div, int &y_div) {
-    x_div = n / x;
-    y_div = n / y;
+// Adjust the count of multiples of x and y in the range 1 to n, considering
+common multiples void adjust_multiples(int n, int x, int y, int &x_div, int
+&y_div) { x_div = n / x; y_div = n / y;
 
     // Deduct common multiples (those divisible by LCM of x and y)
     int common_multiples = n / lcm(x, y);
@@ -57,15 +56,15 @@ int main() {
 🫴 IF A NUMBER IS ONE LESS OR GREATER THAN A NUMBER, THEN THEIR GCD WILL BE 1!!!
 
 
-🫴 Inclusive and exclusive ranges determine whether the endpoints of a range are 
-included in the range or not. An inclusive range includes both endpoints, while 
+🫴 Inclusive and exclusive ranges determine whether the endpoints of a range are
+included in the range or not. An inclusive range includes both endpoints, while
 an exclusive range includes the start point but not the end point.
 
-So, for the range (1, 4], it is an exclusive range, meaning it includes all 
+So, for the range (1, 4], it is an exclusive range, meaning it includes all
 values greater than 1 and less than or equal to 4. In other words, the range
  includes 2, 3, and 4, but not 1.
 
-To find the sum of the elements in this exclusive range, you simply add these 
+To find the sum of the elements in this exclusive range, you simply add these
 values together:
 2 + 3 + 4 = 9
 
@@ -79,12 +78,14 @@ Calculating the Sum of the Last m Largest Numbers in a Sequence:|
 
 Given a sequence from 1 to N:
 
-To find the sum of the last m largest numbers, we first need to identify these numbers.
+To find the sum of the last m largest numbers, we first need to identify these
+numbers.
 
 The last m largest numbers in the sequence from 1 to N would be:
 N−1,N−2,…,N−m+1
 
-Now, let's use the arithmetic sequence sum formula to determine the sum of these numbers.
+Now, let's use the arithmetic sequence sum formula to determine the sum of these
+numbers.
 
 The formula to find the sum of an arithmetic sequence is:
 Sum=n/2×(first term+last term)
@@ -99,22 +100,28 @@ Plugging in these values:
 Sum=m / 2 × (N − m + 1 + N)
 Sum=m / 2 × (2N − m + 1)
 highSum = (k * (2 * n - k + 1)) / 2;
-*/
 
-
-
-
+------------------------------------------------------------------------------------
+=> SUM OF 1 to N odd numbers:
+If you want to find the sum of the first
+k odd numbers, you can use the formula:
+sum = k^2,
+k represents the number of odd numbers you're summing up. If
+n is the largest odd number in the series, then
+k would be how many odd numbers there are up to
+n, including n itself. Since every other number is odd,
+k can be found as n+1/2 if n itself is odd. Thus, you can also 
+express the formula in terms of n directly if you want the sum from 1 to an odd
+numbers, then:
+Sum = ((n + 1) / 2)^2
 /*
 ╔═══════════╗
 ║ FORMULAS: ║
 ╚═══════════╝
 
-We can find the sum of squares of the first n natural numbers using the formula, 
+We can find the sum of squares of the first n natural numbers using the formula,
 SUM = 1^2 + 2^2 + 3^2 + ... + n^2 = [n(n+1)(2n+1)] / 6
 */
-
-
-
 
 /*
 --------------------------------------------------------------------------------
@@ -145,8 +152,6 @@ https://github.com/tanvee009/Cpp-programming/blob/main/GCD_overlapping.cpp
 
 */
 
-
-
 /*
 --------------------------
 | DIGIT COUNT TECHNIQUE: |
@@ -157,9 +162,6 @@ log10(n) + 1.
 it will give us the digit count.
 
 */
-
-
-
 
 /*
 --------------------------
@@ -172,8 +174,12 @@ using namespace std;
 typedef long long ll;
 
 int ncr(int n, int r) {
-    if(n < r) return 0; // if n becomes smaller than r, we can't fulfill r.so, 0 combination
-    if(r == 0 || r == n) return 1; //if r is equivalent to 0 or r == n then there is only 1 combination. think about it.
+    if(n < r)
+        return 0; // if n becomes smaller than r, we can't fulfill r.so, 0
+                  // combination
+    if(r == 0 || r == n)
+        return 1; // if r is equivalent to 0 or r == n then there is only 1
+                  // combination. think about it.
     return ncr(n - 1, r - 1) + ncr(n - 1, r);
 }
 
@@ -213,12 +219,11 @@ C(n, k) = n! / (k! * (n - k)!)   |
 ----------------------------------
 */
 
-
 /*
 NPK = N! / (N-K)!
-suppose, 1,2,3 => here  {1,2} will be a combination, as well {2, 1} will be counted
+suppose, 1,2,3 => here  {1,2} will be a combination, as well {2, 1} will be
+counted
 */
-
 
 /*
 ------------------------------------------
@@ -233,11 +238,9 @@ i=4
 i=1
 
 i=n-1
- ∑  r^i => r^n - 1 / r - 1 . suppose, r = 2. and i will go till n. then => 2^(n+1) - 1/ 2 - 1.
-i=0
-this is geometric progression
+ ∑  r^i => r^n - 1 / r - 1 . suppose, r = 2. and i will go till n. then =>
+2^(n+1) - 1/ 2 - 1. i=0 this is geometric progression
 */
-
 
 /*
 -----------------------------------------
@@ -280,9 +283,6 @@ int main() {
 
 */
 
-
-
-
 /*
 ╔═══════════╗
 ║ Log & Exp ║
@@ -322,31 +322,28 @@ int main() {
 ---------------------------------------------
 
 Intuition:
-Imagine you have a ladder of height b and you're measuring it using a 
-ruler of length a. The logarithm log⁡abloga​b essentially asks: "How many rulers 
-of length a do we need to measure the ladder of height b?"
+Imagine you have a ladder of height b and you're measuring it using a
+ruler of length a. The logarithm log⁡abloga​b essentially asks: "How many
+rulers of length a do we need to measure the ladder of height b?"
 
-But what if our ruler is of a different length, say c? The right-hand side of 
+But what if our ruler is of a different length, say c? The right-hand side of
 the formula measures the ladder in two steps using the new ruler:
 
-    log⁡c(b): How many c-length rulers are needed to measure the ladder of height b?
-    log⁡c(a): How many c-length rulers to measure the original a-length ruler?
+    log⁡c(b): How many c-length rulers are needed to measure the ladder of
+height b? log⁡c(a): How many c-length rulers to measure the original a-length
+ruler?
 
-Dividing these (log⁡c(b)/log⁡c(a)​) gives us the equivalent measure of the ladder height
-b but in terms of the original ruler a, essentially converting our measurement system
-back to rulers of length a.
+Dividing these (log⁡c(b)/log⁡c(a)​) gives us the equivalent measure of the
+ladder height b but in terms of the original ruler a, essentially converting our
+measurement system back to rulers of length a.
 
 Visual:
-Place two ladders side by side, one of height b and the other of height a. Measure both 
-using rulers of length c. The ratio of these two measurements (counts of rulers) gives
-you a conversion factor to understand how many a-length rulers would be needed to
-measure the ladder of height b.
+Place two ladders side by side, one of height b and the other of height a.
+Measure both using rulers of length c. The ratio of these two measurements
+(counts of rulers) gives you a conversion factor to understand how many a-length
+rulers would be needed to measure the ladder of height b.
 
 */
-
-
-
-
 
 /*
 ╔═════════════════╗
@@ -358,7 +355,7 @@ int main() {
     int n = 1000000;
     long long sum = 0;
     for(int i = 1; i <= n; i++)
-        for(int j = i; j <= n; j += i) 
+        for(int j = i; j <= n; j += i)
             sum += j;
     cout << sum;
     return 0;
@@ -369,26 +366,24 @@ It might seem like it's O(n^2), but it's O(nlogn).
 The sum of harmonic series is logn.
 
 1 + 1/2 + 1/3 + 1/4 + 1/5 + 1/6 + 1/7 + 1/8... 1/n;
-here => 1/7 will have the value less than 1/8 and greater than 1/4. So, we will take the
-last 2's power for all this.
-1 + 1/2 + 1/2 + 1/4 + 1/4 + 1/4 + 1/4 + 1/8... 1/log2(n)
-1 +     1              + 1            + 1.... and it's eventually log2(n);
+here => 1/7 will have the value less than 1/8 and greater than 1/4. So, we will
+take the last 2's power for all this. 1 + 1/2 + 1/2 + 1/4 + 1/4 + 1/4 + 1/4 +
+1/8... 1/log2(n) 1 +     1              + 1            + 1.... and it's
+eventually log2(n);
 */
-
-
-
-
 
 /*
 ╔════════════════════╗
 ║ Modular Arithmetic ║
 ╚════════════════════╝
 
-Modulo World => suppose n mod 6, in this world 5, 11, 17, 23... belong to the same family. and so on like this.
+Modulo World => suppose n mod 6, in this world 5, 11, 17, 23... belong to the
+same family. and so on like this.
 
 
-1) a≡b (mod m) means that a and b have the same remainder when divided by m. that is a mod m = b mod m.
-and for that (a-b) mod m = 0. 1 % 6 => 1 and 7 % 6 => 1. 7 - 1 = 6 mod 6 => 0.
+1) a≡b (mod m) means that a and b have the same remainder when divided by m.
+that is a mod m = b mod m. and for that (a-b) mod m = 0. 1 % 6 => 1 and 7 % 6
+=> 1. 7 - 1 = 6 mod 6 => 0.
 
 2) (a + b) ≡ (a mod m + b mod m) (mod m);
 3) (a - b) ≡ (a mod m - b mod m) (mod m);
@@ -432,7 +427,8 @@ int main() {
   int result7 = (a * b * c * d) % m; // overflow
   int result8 = (((a * b) % m) * c % m) * d % m; // still overflow
   int result9 = (((1LL * a * b) % m) * c % m) * d % m; // no overflow
-  cout << "(a * b * c * d) mod m = " << result7 << ' ' << result8 << ' ' << result9 << endl;
+  cout << "(a * b * c * d) mod m = " << result7 << ' ' << result8 << ' ' <<
+result9 << endl;
 
   // a - 3 * b mod m = (a mod m - (3 * b) mod m + m) mod m
   cout << "(a - 3 * b) mod m = " << (a - 3LL * b % m + m) % m << endl;
@@ -459,10 +455,6 @@ int main() {
 
 */
 
-
-
-
-
 /*
 ╔═══════════════════════╗
 ║ Some Builtin Function ║
@@ -485,7 +477,8 @@ int main() {
   cout << "Ceil value of " << num_2 << " is: " << ceil_result << '\n';
   cout << "Floor value of " << num_2 << " is: " << floor_result << '\n';
   cout << "Round value of " << num_2 << " is: " << round_result << '\n';
-  cout << "Long long rounded value of " << num_2 << " is: " << llround_result << '\n';
+  cout << "Long long rounded value of " << num_2 << " is: " << llround_result <<
+'\n';
 
   // log, log2, log10
   double num_3 = 1000.0;
@@ -529,8 +522,9 @@ int main() {
   cout << "Is " << ch << " a digit? " << is_digit_result << '\n';
   cout << "Is " << ch << " in lowercase? " << is_lower_result << '\n';
   cout << "Is " << ch << " in uppercase? " << is_upper_result << '\n';
-  cout << "Lowercase conversion of " << ch << " is: " << to_lower_result << '\n';
-  cout << "Uppercase conversion of " << ch << " is: " << to_upper_result << '\n';
+  cout << "Lowercase conversion of " << ch << " is: " << to_lower_result <<
+'\n'; cout << "Uppercase conversion of " << ch << " is: " << to_upper_result <<
+'\n';
 
   // swap
   int num_5 = 10;
@@ -543,7 +537,8 @@ int main() {
   int num_7 = 36;
   int num_8 = 48;
   int gcd_result = __gcd(num_7, num_8);
-  cout << "GCD of " << num_7 << " and " << num_8 << " is: " << gcd_result << '\n';
+  cout << "GCD of " << num_7 << " and " << num_8 << " is: " << gcd_result <<
+'\n';
 
   // rand
   srand(time(0)); // Seed the random number generator

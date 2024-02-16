@@ -44,7 +44,10 @@ as even.
 now finally, we check for adding odd occurance which will be palindrome. suppose, the string
 here dffe, we get the bitmask 1100. now for d, when(line 19) reaches j = 3, we get the XOR as
 1000. now the 5th string "edd" has bitmask value 1000. and both of them concatenated makes a
-palindrome pair. How is this?? look, the 'd' and 'e' are odd numbered in the "dffe" string. 
+palindrome pair. 
+Here, "exactly one" odd occurance can be taken for odd sized string. Thus, we flip the jth bit and check if there is
+any string there with even occurances of that bit character..
+How is this?? look, the 'd' and 'e' are odd numbered in the "dffe" string. 
 if we find another string which has odd numbers of e and even numbers of d, it will still make a
 palindrome, we are looking for those combinations.
 
