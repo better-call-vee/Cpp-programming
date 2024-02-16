@@ -248,7 +248,7 @@ int main() {
         a[i] ^= a[i - 1];
     }
     int ans = 0;
-    for(int k = 0; k < 2; k++) {
+    for(int k = 0; k < 30; k++) {
         vector<int> s(2), c(2);
         c[0] = 1;
         for(int i = 1; i <= n; i++) {
