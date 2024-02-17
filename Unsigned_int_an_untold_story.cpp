@@ -22,7 +22,7 @@ int main() {
 
     return 0;
 }
-
+///SO, UNSIGNED INTEGER DOES IT IN A mod 2^32 WAY
 /*
 In C++, unsigned integers are a type of integer that can only represent
 non-negative numbers. Unlike their signed counterparts, unsigned integers do not
