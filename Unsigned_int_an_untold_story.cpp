@@ -22,7 +22,7 @@ int main() {
 
     return 0;
 }
-///SO, UNSIGNED INTEGER DOES IT IN A mod 2^32 WAY
+/// SO, UNSIGNED INTEGER DOES IT IN A mod 2^32 WAY
 /*
 In C++, unsigned integers are a type of integer that can only represent
 non-negative numbers. Unlike their signed counterparts, unsigned integers do not
@@ -51,3 +51,40 @@ Underflow: Similarly, if a subtraction results in a negative number, the
 operation wraps around in the opposite direction, producing a value that is
 effectively 2^32 minus the absolute value of the result.
 */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ull unsigned long long
+
+ull power(ull x, ull n) {
+    ull ans = 1;
+    while(n > 0) {
+        if(n & 1) ans *= x;
+        x *= x;
+        n >>= 1;
+    }
+    return ans;
+}
+
+int32_t main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    ull x = 1e9 + 7, n = 1e18;
+    cout << power(x, n) << '\n'; // x^n mod 2^64
+    return 0;
+}
+
+// see, here, the number will be wrapped around with 2^64
+// the highest value of ull is 2^64 - 1. while the highest value of
+// long long is 2^63 - 1.
+
+int32_t main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    unsigned long long x = 18446744073709551615; // highest number in ull
+    x += 1;
+    cout << x << '\n';
+    return 0;
+}
+// It will give output zero.

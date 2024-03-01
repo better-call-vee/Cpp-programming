@@ -492,3 +492,8 @@ int main() {
         std::cout << "The " << k + 1 << "-th bit is not set.\n";
     return 0;
 }
+
+
++--------------------------------------+
+|   numeric_limits<int / ll>::max()    | Gives the 2^31 - 1 and 2^63 - 1 values.
++--------------------------------------+
