@@ -3,7 +3,7 @@
  don't typically talk about division in the same way we do in real number
  arithmetic. Instead, we use the concept of a multiplicative inverse to achieve
  a similar outcome.
-
+ We can say:
  a × a^−1(1 / a) ≡ 1 (% mod)
 
  The MMI of a % mod exists if and only if "a and mod are coprime (i.e.,
@@ -86,7 +86,7 @@ Proof:
 
 => a^(m - 1) ≡ 1 (% m)
 => a^(m - 1) / a ≡ 1 / a (% m)
-=> a^(m - 2) ≡ 1 / a % m
+=> a^(m - 2) ≡ 1 / a % m   (we know that 1/a is known as inverse)
 
 Thus, a^(m - 2) % m = 1 / a
 

@@ -1,5 +1,5 @@
 // https://codeforces.com/contest/1849/problem/B
-
+// this is wrong solution. just used for a concept
 #include <bits/stdc++.h>
 using namespace std;
 
