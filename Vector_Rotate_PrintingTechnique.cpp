@@ -110,8 +110,8 @@ output will be:
 4 4 4 4 2 2 3 3 3
 6 7 8 9 1 2 3 4 5
 
-if you right the end pointer a.begin() + 8;
+if you write the end pointer a.begin() + 8;
 it will be
-4 4 4 2 2 3 3 3 4
-6 7 8 1 2 3 4 5 9
+4 2 2 3 3 3 4 4 4 
+9 1 2 3 4 5 6 7 8
 */

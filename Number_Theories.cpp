@@ -110,7 +110,7 @@ k represents the number of odd numbers you're summing up. If
 n is the largest odd number in the series, then
 k would be how many odd numbers there are up to
 n, including n itself. Since every other number is odd,
-k can be found as n+1/2 if n itself is odd. Thus, you can also 
+k can be found as n+1/2 if n itself is odd. Thus, you can also
 express the formula in terms of n directly if you want the sum from 1 to an odd
 numbers, then:
 Sum = ((n + 1) / 2)^2
@@ -342,6 +342,33 @@ Place two ladders side by side, one of height b and the other of height a.
 Measure both using rulers of length c. The ratio of these two measurements
 (counts of rulers) gives you a conversion factor to understand how many a-length
 rulers would be needed to measure the ladder of height b.
+
+*/
+
+/*
+╔═════════════════════╗
+║ Logarithm and Power ║
+╚═════════════════════╝
+Given 4 numbers A,B,C and D. If A^B > C^D, print "YES" otherwise, print "NO".
+(1 ≤ A, C ≤ 10^7) , (1 ≤ B, D ≤ 10^12)
+
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int main() {
+    cin.tie(nullptr)->sync_with_stdio(false);
+    ll a, b, c, d;
+    cin >> a >> b >> c >> d;
+    if (b * log(a) > d * log(c))
+        cout << "YES\n";
+    else
+        cout << "NO\n";
+    return 0;
+}
+
+We know, log(a)^b = bloga.
+The question is like an equation.
+but inequal equation. We will just simply check the 362th line.
 
 */
 

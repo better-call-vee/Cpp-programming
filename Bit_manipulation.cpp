@@ -406,12 +406,12 @@ int main() {
     while(T--) {
         int N;
         cin >> N;
-        bitset<32> inv(N);
+        bitset<32> inv(N); // convert the integer into a binary and stores
 
         string helper = inv.to_string();
         reverse(helper.begin(), helper.end());
 
-        bitset<32> rev(helper);
+        bitset<32> rev(helper); // takes the string directly as binary number.
         cout << rev.to_ulong();
         cout << "\n";
     }
