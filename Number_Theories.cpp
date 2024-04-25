@@ -592,3 +592,16 @@ int main() {
   return 0;
 }
 */
+
+/*
+╔═════════════════════════╗
+║ Prime numbers and facts ║
+╚═════════════════════════╝
+
+### Two prime numbers multiplicated number will always have maximum 4 divisors.
+    6 = 1, 2, 3, 6   (here, 2 and 3 are prime numbers and 2 x 3 = 6)
+    35 = 1, 5, 7, 35 (here, 5 and 7 are prime numbers and 5 x 7 = 35)
+    like this
+    related problem : https://codeforces.com/contest/1474/problem/B
+
+*/
