@@ -63,3 +63,48 @@ int main() {
 
     return 0;
 }
+
+
+
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+int main() {
+    char str1[200], str2[100];
+
+    cout << "Enter first string: ";
+    cin.getline(str1, sizeof(str1)); // Read string including spaces
+    str1[strcspn(str1, "\n")] = '\0'; // Remove newline character if present
+
+    cout << "Enter second string: ";
+    cin.getline(str2, sizeof(str2)); // Read string including spaces
+    str2[strcspn(str2, "\n")] = '\0'; // Remove newline character if present
+
+    //strcspn gives the first occurance of any character.
+
+    return 0;
+}
+
+
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string essay;
+    string line;
+    
+    cout << "Enter your essay (press Ctrl+D to end):" << endl;
+
+    while (getline(cin, line)) {
+        essay += line + "\n";
+    }
+
+    cout << "\nYour essay is:\n" << essay << endl;
+
+    return 0;
+}

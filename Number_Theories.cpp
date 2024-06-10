@@ -605,3 +605,8 @@ int main() {
     related problem : https://codeforces.com/contest/1474/problem/B
 
 */
+
+╔═══════════════════════════════════╗
+║ Some great Number Theory Problems ║
+╚═══════════════════════════════════╝
+https://codeforces.com/contest/1826/problem/B (explanation attached in the submission)

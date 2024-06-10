@@ -40,10 +40,10 @@ int query(int node, int l_range, int r_range, int l, int r) {
     return query(lch, l_range, mid, l, r) + query(rch, mid + 1, r_range, l, r);
     // also here, we can output max / min of this two portions if they ask for
     /*
-    29th line: means the range is completely out of the nodes range
-    30th line: great observation needed. it means the node is partially or
+    31st line: means the range is completely out of the nodes range
+    38th line: great observation needed. it means the node is partially or
                totally in the range. Thus we add the sum to it.
-    32th line: We divide this into two parts and go to left and right. and again
+    39th line: We divide this into two parts and go to left and right. and again
     divide and conquer.
     */
 }
@@ -61,9 +61,9 @@ void update(int node, int l_range, int r_range, int i, int x) {
     /*
        almost the same thing. But here, we only need to update that single
        index and also all the nodes containing that single index. So, we go on
-       with the divide and conquer and in the end: line 51 adds the left and
+       with the divide and conquer and in the end: line 59 adds the left and
        right sides' addition to the current node because we need to update all
-       the segments containing that particular index. Also, line 44: we only
+       the segments containing that particular index. Also, line 52: we only
        searching for that only one index at first, so go on in quest of that
        leaf node which contain that particular index, and then we track back
        updating all the nodes containing that particular index.
