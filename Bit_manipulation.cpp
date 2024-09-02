@@ -136,7 +136,7 @@ For example, if k=3, then (1<<k) will result in the binary representation 1000.
 
 Take the bitwise NOT of the above result: ∼(1<<k)
 This will flip all the bits of the result from step 1. That means all bits will be set
- to 1 except the kthkth bit, which will be set to 0. For the example above, the result will be 0111.
+to 1 except the kth bit, which will be set to 0. For the example above, the result will be 0111.
 
 Take the bitwise AND of x with the result from step 2: x&∼(1<<k)
         This will keep all the bits of xx unchanged except for the kthkth bit. 
@@ -319,7 +319,15 @@ int main()
    return 0;
 }
 
-
+See,
+for 5 = 0101 (we took 4 bits, so it remains in bound! 3 bits give -4 lowest, we need -5)
+   -5 = 1011 (two's complement)
+-------------
+    0= 10000 (here, first 1 + 1 = 10, we take 0, now we have 1 in hand, again, 1 + 1 = 10, and so on);
+We discard the out of bound fifth bit as we were working with 4 bits only. Thus, we get +5 + (-5) = 0 
+in Binary. Which isn't possible with one's complement.
+0101 = 1010 (one's complement)
+1010 + 1 = 1011 (two's complement)'
 
 +---------------------------------+
 |          log2 and MSB           |
@@ -504,3 +512,37 @@ int main() {
 +------------------------------------------+
 int pw = (n & (n - 1) == 0 ? __lg(n) : __lg(n) + 1);
  pw = (1 << pw);
+
+
++------------------------------------------+
+|      subtraction of bits: property '     | 
++------------------------------------------+
+
+#include <iostream>
+#include <bitset>
+
+int main() {
+    unsigned int n;
+    unsigned int k;
+    
+    std::cout << "Enter the number (n): ";
+    std::cin >> n;
+    std::cout << "Enter the number of bits to unset (k): ";
+    std::cin >> k;
+
+    // Create the mask
+    unsigned int mask = (1u << 31) - (1u << k);
+    unsigned int result = n & mask;
+
+    // Display the binary representation of the inputs and the result
+    std::cout << "Original number (n): " << n << " (binary: " << std::bitset<32>(n) << ")" << std::endl;
+    std::cout << "Mask: " << mask << " (binary: " << std::bitset<32>(mask) << ")" << std::endl;
+
+    std::cout << "Modified number: " << result << " (binary: " << std::bitset<32>(result) << ")" << std::endl;
+
+    return 0;
+}
+
+if we do (1 << i) - (1 << j) = (1 << i) will have one less set bit from the left and 0 to j - 1 bits will be
+unset 
+Suppose, 10000 = 16, 10 = 2, 16 - 2 = 14 = 1110. 

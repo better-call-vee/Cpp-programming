@@ -36,6 +36,10 @@ Among the elements of a given array, the maximum mod of any possible pair will
 be second maximum % maximum. There won't be any other mod which is greater than
 this.
 suppose, 5 4 1 8. here we can't get a mod larger than 5.
+
+
+see the problem:
+https://toph.co/p/modulo
 */
 
 #include <bits/stdc++.h>

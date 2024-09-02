@@ -610,3 +610,10 @@ int main() {
 ║ Some great Number Theory Problems ║
 ╚═══════════════════════════════════╝
 https://codeforces.com/contest/1826/problem/B (explanation attached in the submission)
+
+
+
+╔═══════════════════════════════════╗
+║   Sum of First n square numbers   ║
+╚═══════════════════════════════════╝
+SUM = 1^2 + 2^2 + 3^2 + ... + n^2 = [n(n + 1)(2n + 1)] / 6;
