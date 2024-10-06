@@ -87,8 +87,11 @@ N−1,N−2,…,N−m+1
 Now, let's use the arithmetic sequence sum formula to determine the sum of these
 numbers.
 
+---------------------------------------------------------------
 The formula to find the sum of an arithmetic sequence is:
+WHEN YOU KNOW THE FIRST AND THE LAST NUMBER OF THE SEQUENCE:
 Sum=n/2×(first term+last term)
+---------------------------------------------------------------
 
 For our sequence:
 
@@ -99,7 +102,6 @@ For our sequence:
 Plugging in these values:
 Sum=m / 2 × (N − m + 1 + N)
 Sum=m / 2 × (2N − m + 1)
-highSum = (k * (2 * n - k + 1)) / 2;
 
 ------------------------------------------------------------------------------------
 => SUM OF 1 to N odd numbers:

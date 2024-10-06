@@ -1,5 +1,6 @@
 /*
-Bit related problems: https://github.com/tanvee009/XPSC_ARCHIEVE/tree/main/WEEK%207/Day_1
+Bit related problems:
+https://github.com/tanvee009/XPSC_ARCHIEVE/tree/main/WEEK%207/Day_1
 https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%207/Day_3/Bitwise_equation.cpp
 https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%208/Day_1/Order_by_XOR.cpp
 https://github.com/tanvee009/XPSC_ARCHIEVE/blob/main/WEEK%2011/Day_2/Array_elimination.cpp
@@ -32,26 +33,22 @@ suppose,
        ^ 1 0 1
          -----
          0 0 0
-Thus, we get the outcome 0. Thus, we know that same numbers' XOR operation eliminates that
-number.
-Suppose, we are given an array of integers. There are pairs of numbers but a number is peerless.
-6 4 5 5 9 4 9 6 2
-if we approach it with brute force, it will take many grueling operations. but if we do this with
+Thus, we get the outcome 0. Thus, we know that same numbers' XOR operation
+eliminates that number. Suppose, we are given an array of integers. There are
+pairs of numbers but a number is peerless. 6 4 5 5 9 4 9 6 2 if we approach it
+with brute force, it will take many grueling operations. but if we do this with
 XOR, we can do it easily.
 6 ^ 4 ^ 5 ^ 5 ^ 9 ^ 4 ^ 9 ^ 6 ^ 2.
-we may think that we are doing XOR with random numbers. How can we find the number like this??
-It's easy. suppose, 5 ^ 6 ^ 5
-   first => 1 0 1
-            1 1 0
+we may think that we are doing XOR with random numbers. How can we find the
+number like this?? It's easy. suppose, 5 ^ 6 ^ 5 first => 1 0 1 1 1 0
             -----
             0 1 1
  second =>  1 0 1
             -----
             1 1 0, which is 6.
-So, what do we understand from this. Eventually the same numbers will be cut off by XOR operations(even
-numbered pairs)
-suppose, we have four 5, three 3, six 8, one 2.
-eventually we will have only one 3 and a 2. got it?
+So, what do we understand from this. Eventually the same numbers will be cut off
+by XOR operations(even numbered pairs) suppose, we have four 5, three 3, six 8,
+one 2. eventually we will have only one 3 and a 2. got it?
 
 
 Trick:
@@ -64,11 +61,11 @@ if we do & of 9 and 1. it will be 1. which will determine 9 as odd.
     -------
           1
 
-   every even number, if we convert it to binary, the last I meant MSB will be 0. if we
-   & it , either 1 or 0 will be the output. 0 means even, 1 means odd.
-   we might think that we are doing & with only a bit(1). but no. int contains 32 bit, thus
-   this 1 have 31 more zeroes in front of it. and the number here(9), has 28 more zeroes in front of
-   it.
+   every even number, if we convert it to binary, the last I meant MSB will be
+0. if we & it , either 1 or 0 will be the output. 0 means even, 1 means odd. we
+might think that we are doing & with only a bit(1). but no. int contains 32 bit,
+thus this 1 have 31 more zeroes in front of it. and the number here(9), has 28
+more zeroes in front of it.
 
 
 Trick:
@@ -87,10 +84,9 @@ Trick: Count number of set bits(1)
 -----------------------
              1   0   1
 
-we can count the set bits here by left shift, right shift and & operation with 1.
-at first , we do & 1 with 1 0 1. we get 1. count++.
-left shift make a number multiple of 2. <<
-right shift make a number half. >>
+we can count the set bits here by left shift, right shift and & operation
+with 1. at first , we do & 1 with 1 0 1. we get 1. count++. left shift make a
+number multiple of 2. << right shift make a number half. >>
 
 5-> 1  0  1
 right shift >> 0 1 0 (first time)
@@ -120,10 +116,7 @@ int main () {
 }
 
 */
--------------
-SET k-th bit|
-============-
-int x = 4, k = 1;
+-- -- -- -- -- -- -SET k - th bit | == == == == == == -int x = 4, k = 1;
 x | (1 << k);
 
 ---------------
@@ -300,23 +293,18 @@ operations.
 using namespace std;
 
 // Check if n is a power of 2 using two's complement
-bool isPowerOfTwo(int n)
-{
-   return n > 0 && (n & (n - 1)) == 0;
-}
+bool isPowerOfTwo(int n) { return n > 0 && (n & (n - 1)) == 0; }
 
 // Get the rightmost set bit of n using two's complement
-int rightmostSetBit(int n)
-{
-   return n & (-n);
-}
+int rightmostSetBit(int n) { return n & (-n); }
 
-int main()
-{
-   int n = 12; // Example: 1100 in binary
-   cout << "Is " << n << " a power of two? " << (isPowerOfTwo(n) ? "Yes" : "No") << endl;
-   cout << "Rightmost set bit of " << n << " is: " << rightmostSetBit(n) << endl;
-   return 0;
+int main() {
+    int n = 12; // Example: 1100 in binary
+    cout << "Is " << n << " a power of two? "
+         << (isPowerOfTwo(n) ? "Yes" : "No") << endl;
+    cout << "Rightmost set bit of " << n << " is: " << rightmostSetBit(n)
+         << endl;
+    return 0;
 }
 
 See,
@@ -420,7 +408,7 @@ int main() {
         reverse(helper.begin(), helper.end());
 
         bitset<32> rev(helper); // takes the string directly as binary number.
-        cout << rev.to_ulong();
+        cout << rev.to_ullong();
         cout << "\n";
     }
     return 0;
@@ -446,22 +434,23 @@ it will print a number with reverse bits.
         cout << n << "\n";
 
 int main() {
-  int n; cin >> n;
-  while (n--) {
-    unsigned int x; cin >> x;
-    unsigned int ans = 0;
-    for (int k = 0; k < 32; k++) {
-      if ((x >> k) & 1) { // bit is 1
-        // flip to 0
-      }
-      else { // bit is 0
-        // flip to 1
-        ans += 1 << k; //it works like ans |= 1 << k;
-      }
+    int n;
+    cin >> n;
+    while(n--) {
+        unsigned int x;
+        cin >> x;
+        unsigned int ans = 0;
+        for(int k = 0; k < 32; k++) {
+            if((x >> k) & 1) { // bit is 1
+                               // flip to 0
+            } else {           // bit is 0
+                // flip to 1
+                ans += 1 << k; // it works like ans |= 1 << k;
+            }
+        }
+        cout << ans << '\n';
     }
-    cout << ans << '\n';
-  }
-  return 0;
+    return 0;
 }
 
 
@@ -494,7 +483,7 @@ bool isKthBitSet(int n, int k) {
 int main() {
     int number = 5; // Example number (binary: 101)
     int k = 2;      // Bit position to check (0-indexed)
-    if (isKthBitSet(number, k))
+    if(isKthBitSet(number, k))
         std::cout << "The " << k + 1 << "-th bit is set.\n";
     else
         std::cout << "The " << k + 1 << "-th bit is not set.\n";
@@ -518,13 +507,13 @@ int pw = (n & (n - 1) == 0 ? __lg(n) : __lg(n) + 1);
 |      subtraction of bits: property '     | 
 +------------------------------------------+
 
-#include <iostream>
 #include <bitset>
+#include <iostream>
 
 int main() {
     unsigned int n;
     unsigned int k;
-    
+
     std::cout << "Enter the number (n): ";
     std::cin >> n;
     std::cout << "Enter the number of bits to unset (k): ";
@@ -535,10 +524,13 @@ int main() {
     unsigned int result = n & mask;
 
     // Display the binary representation of the inputs and the result
-    std::cout << "Original number (n): " << n << " (binary: " << std::bitset<32>(n) << ")" << std::endl;
-    std::cout << "Mask: " << mask << " (binary: " << std::bitset<32>(mask) << ")" << std::endl;
+    std::cout << "Original number (n): " << n
+              << " (binary: " << std::bitset<32>(n) << ")" << std::endl;
+    std::cout << "Mask: " << mask << " (binary: " << std::bitset<32>(mask)
+              << ")" << std::endl;
 
-    std::cout << "Modified number: " << result << " (binary: " << std::bitset<32>(result) << ")" << std::endl;
+    std::cout << "Modified number: " << result
+              << " (binary: " << std::bitset<32>(result) << ")" << std::endl;
 
     return 0;
 }
@@ -546,3 +538,18 @@ int main() {
 if we do (1 << i) - (1 << j) = (1 << i) will have one less set bit from the left and 0 to j - 1 bits will be
 unset 
 Suppose, 10000 = 16, 10 = 2, 16 - 2 = 14 = 1110. 
+
+
+
++------------------------------------------+
+|       count of setbits in a number       | 
++------------------------------------------+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int x = 29; // Binary: 11101, has 4 set bits (1-bits)
+    int count = __builtin_popcount(x);
+    cout << "Number of 1-bits in " << x << " is: " << count << endl;
+    return 0;
+}
