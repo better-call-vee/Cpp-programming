@@ -139,3 +139,6 @@ int main() {
     }
     return 0;
 }
+
+
+// N.B: If mod == 1, we gotta return 0!

@@ -394,11 +394,22 @@ This is a proper example of harmonic series. The time complexity is O(nlogn).
 It might seem like it's O(n^2), but it's O(nlogn).
 The sum of harmonic series is logn.
 
+=> n/1 + n/2 + n/3 + ... + n/n
+=> n * (1/1 + 1/2 + 1/3 + ... + 1/n)
 1 + 1/2 + 1/3 + 1/4 + 1/5 + 1/6 + 1/7 + 1/8... 1/n;
 here => 1/7 will have the value less than 1/8 and greater than 1/4. So, we will
 take the last 2's power for all this. 1 + 1/2 + 1/2 + 1/4 + 1/4 + 1/4 + 1/4 +
 1/8... 1/log2(n) 1 +     1              + 1            + 1.... and it's
 eventually log2(n);
+    First Group: 1 (contains 1 term)
+    Second Group: 1/2 (contains 1 term)
+    Third Group: 1/3 + 1/4 (contains 2 terms, both greater than 1/4)
+    Fourth Group: 1/5 + 1/6 + 1/7 + 1/8 (contains 4 terms, each greater than
+    1/8) And so on...
+
+By grouping the terms in this way, each group roughly sums up to 1, and the
+number of groups is roughly log2(n). This is why the sum of the harmonic series
+up to n grows approximately like log(n).
 */
 
 /*
