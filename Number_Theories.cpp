@@ -221,6 +221,24 @@ C(n, k) = n! / (k! * (n - k)!)   |
 ----------------------------------
 */
 
+// iterative way
+const int N = 2005, mod = 1e9 + 7;
+
+int C[N][N], fact[N];
+void prec() { // O(n^2)
+  for (int i = 0; i < N; i++) {
+    C[i][0] = C[i][i] = 1;
+    for (int j = 1; j < i; j++) {
+      C[i][j] = (C[i - 1][j - 1] + C[i - 1][j]) % mod;
+    }
+  }
+  fact[0] = 1;
+  for (int i = 1; i < N; i++) {
+    fact[i] = 1LL * fact[i - 1] * i % mod;
+  }
+}
+
+
 /*
 NPK = N! / (N-K)!
 suppose, 1,2,3 => here  {1,2} will be a combination, as well {2, 1} will be
@@ -242,6 +260,8 @@ i=1
 i=n-1
  ∑  r^i => r^n - 1 / r - 1 . suppose, r = 2. and i will go till n. then =>
 2^(n+1) - 1/ 2 - 1. i=0 this is geometric progression
+
+where r will be the common ratio.
 */
 
 /*
