@@ -257,11 +257,17 @@ i=4
  ∑  i^2 => 1+4+9+16=30    this is sigma notation.
 i=1
 
-i=n-1
- ∑  r^i => r^n - 1 / r - 1 . suppose, r = 2. and i will go till n. then =>
-2^(n+1) - 1/ 2 - 1. i=0 this is geometric progression
-
+GEOMETRIC PROGRESSION.
+-----------------------------
+i = n - 1
+ ∑  r^i   => r^n - 1 / r - 1   
+i = 0
+-----------------------------
+suppose, r = 2. and i will go till n. then =>
+2^(n+1) - 1/ 2 - 1. 
 where r will be the common ratio.
+
+https://atcoder.jp/contests/abc293/tasks/abc293_e?lang=en
 */
 
 /*
