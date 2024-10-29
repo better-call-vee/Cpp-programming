@@ -52,6 +52,7 @@ int main()
 
             else
             {
+                cout << a[i] << " " <<  p.order_of_key(a[i]) << '\n';
                 ans += p.order_of_key(a[i]); // counting the strictly less elements than a[i].
                 p.insert(a[i]);
             }

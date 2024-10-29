@@ -50,6 +50,7 @@ int solve(int a, int x, int m) {
         return ans;
     } else {
         int ans = (solve(a, x - 1, m) + power(a, x, m)) % m; // line 32
+        // goes to line 47 and calculates for odd and then goes on.
         return ans;
     }
 }
