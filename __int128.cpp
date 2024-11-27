@@ -42,3 +42,40 @@ int32_t main() {
     write(ans);
     return 0;
 }
+
+// https://www.spoj.com/problems/PWRANDMOD/en/
+// the mod value is out of bound for long long. we use __int128
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ull unsigned long long
+#define u128 unsigned __int128
+
+ull mulmod(ull a, ull b, u128 mod) {
+    ull ans = (u128)a * b % mod;
+    return ans;
+}
+int32_t main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    int t;
+    cin >> t;
+    while(t--) {
+        ull a, b;
+        string mod_s;
+        cin >> a >> b >> mod_s;
+        u128 mod = 0;
+        for(auto d : mod_s) {
+            mod = mod * 10 + (d - '0');
+        }
+        ull ans = 1 % mod;
+        while(b) {
+            if(b & 1) ans = mulmod(ans, a, mod);
+            a = mulmod(a, a, mod); 
+            b >>= 1;
+        }
+        cout << ans << '\n';
+    }
+    return 0;
+}
+// O(log b)

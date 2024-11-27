@@ -57,10 +57,10 @@ Got only one undone mofo F the fucker who has no adjacent node. So, mission pass
 
 Selected     Distances
 Node
-             A     B     C     D     E     F
--            0    ♾️    ♾️   ♾️    ♾️   ♾️
-A            0    10     ♾️   5     ♾️   ♾️  (A Done, we won't consider this mofo ever again)
-D            0    10     ♾️   5     25    ♾️  (D Done, we won't consider this mofo ever again)
+             A     B     C     D     E      F
+-            0    ♾️    ♾️    ♾️    ♾️     ♾️
+A            0    10     ♾️    5     ♾️    ♾️  (A Done, we won't consider this mofo ever again)
+D            0    10     ♾️    5     25    ♾️  (D Done, we won't consider this mofo ever again)
 B            0    10     17    5     15    ♾️  (B Done, we won't consider this mofo ever again)
 E            0    10     17    5     15    17   (E Done, we won't consider this mofo ever again)
 C            0    10     17    5     15    17    (C Done, we won't consider this mofo ever again)

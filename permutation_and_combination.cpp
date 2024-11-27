@@ -88,3 +88,47 @@ signed main() {
 
 // Similar problem : https://cses.fi/problemset/task/1715
 // good combinatorics problem : https://codeforces.com/problemset/problem/300/C
+
+/*
+When you have n unique (distinct) numbers, there’s nothing stopping you
+from rearranging each one independently. So, the total number of unique ways to
+arrange them is n! . This is simply the product of all
+integers from 1 to n: n! = n×(n−1)×(n−2)×⋯×1. it is complete freedom to place
+each number in any position.
+When all items are unique, imagine arranging them one by one:
+    For the first position, you have n options (any of the n items).
+    For the second position, you’re left with n−1 options, and so on.
+This freedom to choose progressively fewer options creates a sequence of
+choices multiplying into n×(n−1)×(n−2)×⋯×1
+
+With Duplicates (Some Numbers Repeating):
+    Now, if certain numbers repeat, then not all rearrangements are unique. We
+get duplicates because swapping identical items doesn’t change the arrangement.
+    To correct for this, divide by the factorial of each group of identical
+items to remove the duplicates. For example, if you have a1 of one number,
+a2 of another, etc., then: n! / a1!×a2!×⋯×ak!
+
+AAB
+AAB, ABA, BAA, AAB, ABA, BAA
+3! / 2! = 3
+AAB, ABA, BAA.
+*/
+
+/*
+nPm
+
+for(int i = n; i >= (n - m + 1); i--) {
+            ans = ans * i;
+}
+
+this is also permutation as n! / (n - m)!
+n! = n * n - 1 * (n - m + 1) * n - m * ...* 1
+so, we can just ignore the n-m*.. * 1 which is (n - m)!
+
+to get the last non zero digit from here, we can just directly check everytime 
+in the loop if there is the last digit which is zero. 
+if not, we move on. if yes, we just remove it to track.
+As, if there is zero at the ending, it will be continuing to stay with 
+zeroes no matter with which number we multiply it.
+
+*/

@@ -226,18 +226,17 @@ const int N = 2005, mod = 1e9 + 7;
 
 int C[N][N], fact[N];
 void prec() { // O(n^2)
-  for (int i = 0; i < N; i++) {
-    C[i][0] = C[i][i] = 1;
-    for (int j = 1; j < i; j++) {
-      C[i][j] = (C[i - 1][j - 1] + C[i - 1][j]) % mod;
+    for(int i = 0; i < N; i++) {
+        C[i][0] = C[i][i] = 1;
+        for(int j = 1; j < i; j++) {
+            C[i][j] = (C[i - 1][j - 1] + C[i - 1][j]) % mod;
+        }
     }
-  }
-  fact[0] = 1;
-  for (int i = 1; i < N; i++) {
-    fact[i] = 1LL * fact[i - 1] * i % mod;
-  }
+    fact[0] = 1;
+    for(int i = 1; i < N; i++) {
+        fact[i] = 1LL * fact[i - 1] * i % mod;
+    }
 }
-
 
 /*
 NPK = N! / (N-K)!
@@ -260,11 +259,11 @@ i=1
 GEOMETRIC PROGRESSION.
 -----------------------------
 i = n - 1
- ∑  r^i   => r^n - 1 / r - 1   
+ ∑  r^i   => r^n - 1 / r - 1
 i = 0
 -----------------------------
 suppose, r = 2. and i will go till n. then =>
-2^(n+1) - 1/ 2 - 1. 
+2^(n+1) - 1/ 2 - 1.
 where r will be the common ratio.
 
 https://atcoder.jp/contests/abc293/tasks/abc293_e?lang=en
@@ -519,6 +518,21 @@ result9 << endl;
 
 
 
+*** An interesting and simple problem:
+we have to output the maximum value of a[1] % mod + a[2] % mod
++ .... a[n] % mod. mod can be any number.
+2 <= a[i] <= 1e5
+
+here, for every value of a, to get the highest mod value:
+(a[1] * a[2] * a[3] * ... a[n] - 1) % a[1, 2, ... n]
+= here, a[1] * a[2] * a[3] * ... a[n] will be divided by that respective
+element.
+remains the -1.
+-1 % that element.
+(-1 + a[i]) % a[i];
+
+that's (a[i] - 1).
+//add a[i] - 1 from 1 to n elements of 'a' and done.
 */
 
 /*
@@ -554,6 +568,9 @@ int main() {
   cout << "Natural logarithm of " << num_3 << " is: " << log_result << '\n';
   cout << "Base-2 logarithm of " << num_3 << " is: " << log2_result << '\n';
   cout << "Base-10 logarithm of " << num_3 << " is: " << log10_result << '\n';
+
+  *** If the base is same, a big number's log is greater than a small number's
+  *** log.
 
   // sqrt, cbrt, pow
   double num_4 = 16.0;
@@ -648,11 +665,45 @@ int main() {
 ╔═══════════════════════════════════╗
 ║ Some great Number Theory Problems ║
 ╚═══════════════════════════════════╝
-https://codeforces.com/contest/1826/problem/B (explanation attached in the submission)
+ https://codeforces.com/contest/1826/problem/B (explanation attached in the
+      // submission)
 
 
 
 ╔═══════════════════════════════════╗
-║   Sum of First n square numbers   ║
+║ Sum of First n square numbers   ║
+╚═══════════════════════════════════╝ SUM =
+          1 ^ 2 + 2 ^ 2 + 3 ^ 2 + ... + n ^ 2 = [n(n + 1)(2n + 1)] / 6;
+
+╔═══════════════════════════════════╗
+║         LARGE DIVISIONS           ║
 ╚═══════════════════════════════════╝
-SUM = 1^2 + 2^2 + 3^2 + ... + n^2 = [n(n + 1)(2n + 1)] / 6;
+#include<bits/stdc++.h>
+using namespace std;
+
+int32_t main() {
+  ios_base::sync_with_stdio(0);
+  cin.tie(0);
+  int t, cs = 0; cin >> t;
+  while (t--) {
+    string a; int b; cin >> a >> b;
+    if (a[0] == '-') {
+      a.erase(a.begin());
+    }
+    b = abs(b);
+    int ans = 0;
+    for (auto c: a) {
+      int d = c - '0';
+      ans = (1LL * ans * 10 % b + d) % b; // the main thing
+      // it's like doing childhood's division
+    }
+    cout << "Case " << ++cs << ": ";
+    if (ans == 0) {
+      cout << "divisible\n";
+    }
+    else {
+      cout << "not divisible\n";
+    }
+  }
+  return 0;
+}
