@@ -34,7 +34,6 @@ https://github.com/better-call-vee/SELF_JOURNEY/blob/main/GREAT%20ALGOS/Binary_s
 // 1,000,000). This makes binary search much faster for large data sets. Not for
 // small data sets
 
-//NOTE: while(high - low > 1e-6) and right = mid, left = mid for precise calculations.
 
 #include <bits/stdc++.h>
 using namespace std;

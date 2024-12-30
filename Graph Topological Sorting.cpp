@@ -123,3 +123,7 @@ int main ()
 }
 
 
+/*
+Or this can be done by indegree count.
+
+*/
