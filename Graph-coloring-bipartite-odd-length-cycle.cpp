@@ -139,4 +139,4 @@ int main ()
 }
 
 
-// odd length cycle detection
+// odd length cycle detection, odd length means not bipartite
